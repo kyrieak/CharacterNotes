@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import CharacterNotes
+//@testable import CharacterNotes
 
 class CharacterNotesTests: XCTestCase {
     

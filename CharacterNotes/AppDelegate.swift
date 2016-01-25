@@ -7,20 +7,34 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  private var documentContext: NSManagedObjectContext?
 
-
+  
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    if (documentContext == nil) {
+      documentContext = getDocumentContext()
+      return false
+    } else {
+      return true
+    }
+//    let document = getUIManagedDocument()
+//    NSLog("\(document)")
+//    
+//    if (document.documentState == .Normal) {
+//      self.documentContext = document.managedObjectContext
+//      NSLog("\(document)")
+//
+//      return true
+//    } else {
+//      return false
+//    }
     // Override point for customization after application launch.
-    let splitViewController = self.window!.rootViewController as! UISplitViewController
-    let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-    navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-    splitViewController.delegate = self
-    return true
   }
 
   func applicationWillResignActive(application: UIApplication) {
@@ -44,18 +58,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
   func applicationWillTerminate(application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
+  
+  private func getUIManagedDocument() -> UIManagedDocument {
+    let fileManager = NSFileManager.defaultManager()
+    let documentsDir = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first
+    let dataDocURL = documentsDir!.URLByAppendingPathComponent("CNDataDoc")
+    let document = UIManagedDocument(fileURL: dataDocURL)
+    
+    if (!fileManager.fileExistsAtPath(dataDocURL.path!)) {
+      NSLog("Document Did Not Exist, creating now")
 
-  // MARK: - Split view
-
-  func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
-      guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-      guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
-      if topAsDetailController.detailItem == nil {
-          // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-          return true
+      document.saveToURL(dataDocURL, forSaveOperation: .ForCreating, completionHandler: {(success: Bool) in
+        if (!success) {
+          NSLog("create document at path \(dataDocURL.path) failed")
+        }
+      })
+    } else {
+      NSLog("Document Did Exist attempting to delete")
+      
+      do {
+        try fileManager.removeItemAtPath(dataDocURL.path!)
+        return getUIManagedDocument()
+      } catch {
+        NSLog("failed to delete ui doc")
+        return document
       }
-      return false
+      
+//      document.openWithCompletionHandler({(success: Bool) in
+//        if (!success) {
+//          NSLog("open document at path \(dataDocURL.path) failed")
+//        }
+//      })
+    }
+    NSLog("\(document)")
+    return document
   }
-
+  
+  func getDocumentContext() -> NSManagedObjectContext {
+    if (documentContext == nil) {
+      documentContext = getUIManagedDocument().managedObjectContext
+    }
+    
+    return documentContext!
+  }
 }
 

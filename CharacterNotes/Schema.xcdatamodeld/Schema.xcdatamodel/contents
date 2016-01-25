@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F1021" minimumToolsVersion="Xcode 7.0">
+    <entity name="Book" representedClassName=".Book" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="book" inverseEntity="Character" syncable="YES"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookList" inverseName="books" inverseEntity="BookList" syncable="YES"/>
+    </entity>
+    <entity name="BookList" representedClassName=".BookList" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="lists" inverseEntity="Book" syncable="YES"/>
+    </entity>
+    <entity name="Character" representedClassName=".Character" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="characters" inverseEntity="Book" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CharacterGroup" inverseName="characters" inverseEntity="CharacterGroup" syncable="YES"/>
+        <relationship name="profileSections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProfileSection" inverseName="character" inverseEntity="ProfileSection" syncable="YES"/>
+    </entity>
+    <entity name="CharacterGroup" representedClassName=".CharacterGroup" syncable="YES">
+        <attribute name="colorB" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="colorG" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="colorR" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="group" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="ProfileQuote" representedClassName=".ProfileQuote" syncable="YES">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="profileSection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProfileSection" inverseName="quotes" inverseEntity="ProfileSection" syncable="YES"/>
+    </entity>
+    <entity name="ProfileSection" representedClassName=".ProfileSection" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="profileSections" inverseEntity="Character" syncable="YES"/>
+        <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProfileQuote" inverseName="profileSection" inverseEntity="ProfileQuote" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Book" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="BookList" positionX="-36" positionY="63" width="128" height="90"/>
+        <element name="Character" positionX="-54" positionY="9" width="128" height="105"/>
+        <element name="CharacterGroup" positionX="-36" positionY="54" width="128" height="120"/>
+        <element name="ProfileQuote" positionX="-36" positionY="18" width="128" height="75"/>
+        <element name="ProfileSection" positionX="9" positionY="81" width="128" height="90"/>
+    </elements>
+</model>
