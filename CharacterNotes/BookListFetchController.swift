@@ -38,7 +38,7 @@ class BookListFetchController: NSFetchedResultsController, UITableViewDataSource
   
   
   func fetchLists() {
-    seed()
+//    seed()
     do {
       try performFetch()
       NSLog("\(sections!.first!)")
@@ -62,12 +62,12 @@ class BookListFetchController: NSFetchedResultsController, UITableViewDataSource
     return (objectAtIndexPath(indexPath) as! BookList)
   }
 
-  
-  func seed() {
-    createBookList(1)
-    createBookList(2)
-    createBookList(3)
-  }
+//  
+//  func seed() {
+//    createBookList(1)
+//    createBookList(2)
+//    createBookList(3)
+//  }
   
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {

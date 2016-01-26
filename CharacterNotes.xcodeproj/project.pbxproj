@@ -34,6 +34,7 @@
 		348ACD901C4CDE0F001659A5 /* CharacterNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348ACD8F1C4CDE0F001659A5 /* CharacterNotesTests.swift */; };
 		348ACD9B1C4CDE10001659A5 /* CharacterNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348ACD9A1C4CDE10001659A5 /* CharacterNotesUITests.swift */; };
 		348ACDAD1C4CE2AC001659A5 /* Schema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 348ACDAB1C4CE2AC001659A5 /* Schema.xcdatamodeld */; };
+		34943C631C56DC77008717C8 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34943C621C56DC77008717C8 /* NavController.swift */; };
 		34D466341C520FEC00432C97 /* BookFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D466331C520FEC00432C97 /* BookFetchController.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		348ACD9A1C4CDE10001659A5 /* CharacterNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNotesUITests.swift; sourceTree = "<group>"; };
 		348ACD9C1C4CDE10001659A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		348ACDAC1C4CE2AC001659A5 /* Schema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schema.xcdatamodel; sourceTree = "<group>"; };
+		34943C621C56DC77008717C8 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		34D466331C520FEC00432C97 /* BookFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFetchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 				345AA2121C55F46300B8E878 /* BooksTableDataSource.swift */,
 				341956501C51714200F1810B /* BookListViewController.swift */,
 				346ACA0A1C5315420063F071 /* BooksViewController.swift */,
+				34943C621C56DC77008717C8 /* NavController.swift */,
 				348ACDBF1C4CE517001659A5 /* Controllers */,
 				348ACDBE1C4CE4B0001659A5 /* Models */,
 				348ACD831C4CDE0F001659A5 /* LaunchScreen.storyboard */,
@@ -358,6 +361,7 @@
 				34067FD31C5033F8002B1D19 /* Quote+CoreDataProperties.swift in Sources */,
 				345997E41C4E04C30025D178 /* BookListFetchController.swift in Sources */,
 				341956511C51714200F1810B /* BookListViewController.swift in Sources */,
+				34943C631C56DC77008717C8 /* NavController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -74,7 +74,7 @@ class BookFetchController: NSFetchedResultsController {
   class func requestBooksNotInList(list: BookList) -> NSFetchRequest {
     let req = NSFetchRequest(entityName: "Book")
     
-    req.predicate = NSPredicate(format: "NONE lists == %@", list)
+    req.predicate = NSPredicate(format: "NOT (SELF IN %@)", list.books!)
     req.sortDescriptors = [SortDesc(key: "order", asc: true)]
     
     return req

@@ -21,8 +21,6 @@ class BooksTableDataSource: NSObject, UITableViewDataSource {
   var booksNotInListFC: BookFC?
   
   override init() {
-    BooksTableDataSource.seed(nil)
-
     booksInListFC = BookFC()
     
     super.init()
@@ -31,8 +29,6 @@ class BooksTableDataSource: NSObject, UITableViewDataSource {
   }
   
   init(list: BookList) {
-    BooksTableDataSource.seed(list)
-
     bookList = list
     booksInListFC = BookFC(inList: list)
     booksNotInListFC = BookFC(notInList: list)
@@ -41,23 +37,14 @@ class BooksTableDataSource: NSObject, UITableViewDataSource {
     
     performFetch(booksInListFC)
     performFetch(booksNotInListFC!)
-  }
-  
-  class func seed(list: BookList?) {
-    let booksInList = [createBook(4), createBook(8), createBook(3)]
     
-    let _ = [createBook(1), createBook(2), createBook(9), createBook(6), createBook(5), createBook(7)]
-    
-    if (list == nil) {
-    } else {
-      list!.books = NSSet(array: booksInList)
+    NSLog("==========================\n\(list.name)")
+    for obj in booksNotInListFC!.fetchedObjects! {
+      NSLog("\((obj as! Book).title!) is fetched ((Not-List)) and check: \(bookList!.books?.containsObject(obj))")
     }
+    NSLog("==========================")
   }
   
-  class func createBook(order: Int) -> Book {
-    let context = getDocumentContext()
-    return Book(order: order, context: context)
-  }
   
   func performFetch(fc: BookFC) {
     do {

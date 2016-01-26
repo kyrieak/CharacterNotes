@@ -13,5 +13,16 @@ import CoreData
 class BookList: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
+
+  convenience init(order: Int, context: NSManagedObjectContext) {
+    self.init(entity: BookList.entityDesc(context)!,
+      insertIntoManagedObjectContext: context)
+    
+    self.order = order
+    self.name = "List No. \(order)"
+  }
   
+  class func entityDesc(context: NSManagedObjectContext) -> NSEntityDescription? {
+    return NSEntityDescription.entityForName("BookList", inManagedObjectContext: context)
+  }
 }
