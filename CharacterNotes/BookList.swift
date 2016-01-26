@@ -25,4 +25,8 @@ class BookList: NSManagedObject {
   class func entityDesc(context: NSManagedObjectContext) -> NSEntityDescription? {
     return NSEntityDescription.entityForName("BookList", inManagedObjectContext: context)
   }
+  
+  func addBooks(books: [Book]) {
+    self.mutableSetValueForKey("books").addObjectsFromArray(books)
+  }
 }

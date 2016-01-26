@@ -75,8 +75,26 @@ class BookListFetchController: NSFetchedResultsController, UITableViewDataSource
   }
   
   
+  func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    return true
+  }
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return sections!.first!.numberOfObjects + 1
+  }
+  
+  func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+    let bookD = bookListAtIndexPath(destinationIndexPath)
+    let bookS = bookListAtIndexPath(sourceIndexPath)
+    
+    if (bookD.order == nil) {
+      if (bookS.order == nil) {
+      }
+    }
+    if (bookD.order!.integerValue < bookS.order!.integerValue) {
+      
+    }
+    tableView.moveRowAtIndexPath(sourceIndexPath, toIndexPath: destinationIndexPath)
   }
 
   

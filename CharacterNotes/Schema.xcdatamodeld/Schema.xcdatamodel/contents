@@ -5,12 +5,14 @@
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="book" inverseEntity="Character" syncable="YES"/>
+        <relationship name="listOrders" optional="YES" toMany="YES" deletionRule="Nullify" syncable="YES"/>
         <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookList" inverseName="books" inverseEntity="BookList" syncable="YES"/>
     </entity>
     <entity name="BookList" representedClassName=".BookList" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="lists" inverseEntity="Book" syncable="YES"/>
+        <relationship name="listOrders" optional="YES" maxCount="1" deletionRule="Nullify" syncable="YES"/>
     </entity>
     <entity name="Character" representedClassName=".Character" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -35,8 +37,8 @@
         <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProfileQuote" inverseName="profileSection" inverseEntity="ProfileQuote" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Book" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="BookList" positionX="-36" positionY="63" width="128" height="90"/>
+        <element name="Book" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="BookList" positionX="-36" positionY="63" width="128" height="105"/>
         <element name="Character" positionX="-54" positionY="9" width="128" height="105"/>
         <element name="CharacterGroup" positionX="-36" positionY="54" width="128" height="120"/>
         <element name="ProfileQuote" positionX="-36" positionY="18" width="128" height="75"/>

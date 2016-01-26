@@ -20,6 +20,7 @@ class BookListViewController: UITableViewController, NSFetchedResultsControllerD
     super.viewDidLoad()
     
     tableView.dataSource = dataSource
+    tableView.setEditing(true, animated: false)
   }
   
   

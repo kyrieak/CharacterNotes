@@ -25,9 +25,9 @@ class NavController: UINavigationController {
     // 4, 8, 3
     // 2, 8, 7
     // 6, 3, 4
-    lists[0].mutableSetValueForKey("books").addObjectsFromArray([books[0], books[1], books[2]])
-    lists[1].mutableSetValueForKey("books").addObjectsFromArray([books[4], books[1], books[8]])
-    lists[2].mutableSetValueForKey("books").addObjectsFromArray([books[6], books[2], books[0]])
+    lists[0].addBooks([books[0], books[1], books[2]])
+    lists[1].addBooks([books[4], books[1], books[8]])
+    lists[2].addBooks([books[6], books[2], books[0]])
 //    lists[0].books = NSSet(array: [books[0], books[1], books[2]])
 //    lists[1].books = NSSet(array: [books[4], books[1], books[8]])
 //    lists[2].books = NSSet(array: [books[6], books[2], books[0]])

@@ -33,7 +33,6 @@
 		348ACD851C4CDE0F001659A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 348ACD831C4CDE0F001659A5 /* LaunchScreen.storyboard */; };
 		348ACD901C4CDE0F001659A5 /* CharacterNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348ACD8F1C4CDE0F001659A5 /* CharacterNotesTests.swift */; };
 		348ACD9B1C4CDE10001659A5 /* CharacterNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348ACD9A1C4CDE10001659A5 /* CharacterNotesUITests.swift */; };
-		348ACDAD1C4CE2AC001659A5 /* Schema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 348ACDAB1C4CE2AC001659A5 /* Schema.xcdatamodeld */; };
 		34943C631C56DC77008717C8 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34943C621C56DC77008717C8 /* NavController.swift */; };
 		34D466341C520FEC00432C97 /* BookFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D466331C520FEC00432C97 /* BookFetchController.swift */; };
 /* End PBXBuildFile section */
@@ -88,7 +87,6 @@
 		348ACD961C4CDE10001659A5 /* CharacterNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharacterNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		348ACD9A1C4CDE10001659A5 /* CharacterNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNotesUITests.swift; sourceTree = "<group>"; };
 		348ACD9C1C4CDE10001659A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		348ACDAC1C4CE2AC001659A5 /* Schema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schema.xcdatamodel; sourceTree = "<group>"; };
 		34943C621C56DC77008717C8 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		34D466331C520FEC00432C97 /* BookFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFetchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				348ACD811C4CDE0F001659A5 /* Assets.xcassets */,
-				348ACDAB1C4CE2AC001659A5 /* Schema.xcdatamodeld */,
 				348ACD781C4CDE0F001659A5 /* AppDelegate.swift */,
 				348ACD7E1C4CDE0F001659A5 /* Main.storyboard */,
 				345997E31C4E04C30025D178 /* BookListFetchController.swift */,
@@ -341,7 +338,6 @@
 				34067FE21C5034CE002B1D19 /* ProfileQuote.swift in Sources */,
 				34067FE51C5034CE002B1D19 /* CharacterGroup+CoreDataProperties.swift in Sources */,
 				34067FD91C5033F8002B1D19 /* Book+CoreDataProperties.swift in Sources */,
-				348ACDAD1C4CE2AC001659A5 /* Schema.xcdatamodeld in Sources */,
 				34D466341C520FEC00432C97 /* BookFetchController.swift in Sources */,
 				34067FD51C5033F8002B1D19 /* BookList+CoreDataProperties.swift in Sources */,
 				34067FE41C5034CE002B1D19 /* ProfileSection.swift in Sources */,
@@ -609,19 +605,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		348ACDAB1C4CE2AC001659A5 /* Schema.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				348ACDAC1C4CE2AC001659A5 /* Schema.xcdatamodel */,
-			);
-			currentVersion = 348ACDAC1C4CE2AC001659A5 /* Schema.xcdatamodel */;
-			path = Schema.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 348ACD6D1C4CDE0F001659A5 /* Project object */;
 }

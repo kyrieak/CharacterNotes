@@ -26,4 +26,14 @@ class Book: NSManagedObject {
   class func entityDesc(context: NSManagedObjectContext) -> NSEntityDescription? {
     return NSEntityDescription.entityForName("Book", inManagedObjectContext: context)
   }
+  
+  func isOrderedBefore(otherBook: Book) -> Bool {
+    if (self.order == nil) {
+      return false
+    } else if (otherBook.order == nil) {
+      return true
+    } else {
+      return (self.order!.integerValue < otherBook.order!.integerValue)
+    }
+  }
 }
