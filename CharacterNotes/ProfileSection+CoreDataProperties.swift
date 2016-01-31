@@ -16,6 +16,6 @@ extension ProfileSection {
 
     @NSManaged var name: String?
     @NSManaged var quotes: NSSet?
-    @NSManaged var character: Character?
+    @NSManaged var character: CharacterProfile?
 
 }

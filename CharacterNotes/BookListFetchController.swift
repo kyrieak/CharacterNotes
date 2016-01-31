@@ -14,8 +14,13 @@ class BookListFetchController: NSFetchedResultsController, UITableViewDataSource
   typealias BookListFC = BookListFetchController
   typealias SortDesc   = NSSortDescriptor
   
+  private(set) var numLists: Int = 0
+  
+  var lastRow: Int {
+    return numLists
+  }
+  
   private var documentContext: NSManagedObjectContext
-  private let cacheFileName: String     = "bookLists"
 
   override init() {
     documentContext = BookListFetchController.getDocumentContext()
@@ -41,10 +46,11 @@ class BookListFetchController: NSFetchedResultsController, UITableViewDataSource
 //    seed()
     do {
       try performFetch()
-      NSLog("\(sections!.first!)")
     } catch {
       NSLog("performFetch failed")
     }
+    
+    numLists = sections!.first!.numberOfObjects
   }
   
   
@@ -76,32 +82,33 @@ class BookListFetchController: NSFetchedResultsController, UITableViewDataSource
   
   
   func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return true
+    return (indexPath.row < lastRow)
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sections!.first!.numberOfObjects + 1
+    return lastRow + 1
   }
   
   func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-    let bookD = bookListAtIndexPath(destinationIndexPath)
-    let bookS = bookListAtIndexPath(sourceIndexPath)
-    
-    if (bookD.order == nil) {
-      if (bookS.order == nil) {
-      }
-    }
-    if (bookD.order!.integerValue < bookS.order!.integerValue) {
+    let maxRow = max(sourceIndexPath.row, destinationIndexPath.row)
+
+    if (maxRow < lastRow) {
+      let bookD  = bookListAtIndexPath(destinationIndexPath)
+      let bookS  = bookListAtIndexPath(sourceIndexPath)
+      let orderD = bookD.order
+
+      bookD.order = bookS.order
+      bookS.order = orderD
       
+      tableView.moveRowAtIndexPath(sourceIndexPath, toIndexPath: destinationIndexPath)
     }
-    tableView.moveRowAtIndexPath(sourceIndexPath, toIndexPath: destinationIndexPath)
   }
 
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("bookListRow", forIndexPath: indexPath)
     
-    if (indexPath.row < (tableView.numberOfRowsInSection(0) - 1)) {
+    if (indexPath.row < lastRow) {
       let list = bookListAtIndexPath(indexPath)
       
       cell.textLabel?.text = list.name
@@ -111,6 +118,7 @@ class BookListFetchController: NSFetchedResultsController, UITableViewDataSource
 
     return cell
   }
+  
   
   private class func getDocumentContext() -> NSManagedObjectContext {
     let delegate = (UIApplication.sharedApplication().delegate as! AppDelegate)

@@ -46,17 +46,13 @@ class BookListViewController: UITableViewController, NSFetchedResultsControllerD
     }
   }
   
-  
-  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    NSLog("can edit")
-    return true
+  override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+    let canMove = dataSource.tableView(tableView, canMoveRowAtIndexPath: proposedDestinationIndexPath)
+    
+    if (canMove) {
+      return proposedDestinationIndexPath
+    } else {
+      return sourceIndexPath
+    }
   }
-  
-  
-  override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    NSLog("can move")
-    return true
-  }
-  
-  
 }
