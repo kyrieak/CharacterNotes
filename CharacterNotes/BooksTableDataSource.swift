@@ -20,6 +20,8 @@ class BooksTableDataSource: NSObject, UITableViewDataSource {
   var booksInListFC: BookFC
   var booksNotInListFC: BookFC?
   
+  private(set) var orderMin: Int?
+  
   override init() {
     booksInListFC = BookFC()
     
@@ -37,6 +39,8 @@ class BooksTableDataSource: NSObject, UITableViewDataSource {
     
     performFetch(booksInListFC)
     performFetch(booksNotInListFC!)
+    
+    orderMin = Int((booksInListFC.fetchedObjects!.first! as! Book).order!)
     
     NSLog("==========================\n\(list.name)")
     for obj in booksNotInListFC!.fetchedObjects! {
@@ -73,11 +77,36 @@ class BooksTableDataSource: NSObject, UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("bookRow")!
     let book = bookAtIndexPath(indexPath)
+    
+    if (Int(book.order!) < (orderMin! + indexPath.row)) {
+      book.order = (orderMin! + indexPath.row)
+    }
 
     cell.textLabel?.text       = book.title
     cell.detailTextLabel?.text = book.author
     
     return cell
+  }
+  
+  func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    return true
+  }
+  
+  
+  func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+    let bookS = bookAtIndexPath(sourceIndexPath)
+    let bookD = bookAtIndexPath(destinationIndexPath)
+
+    if (sourceIndexPath.row < destinationIndexPath.row) {
+      NSLog("\n\nDragging down\n\n")
+      let (rowS, rowD) = (sourceIndexPath.row, destinationIndexPath.row)
+      let diffRow   = abs(rowS - rowD)
+      let diffOrder = abs(Int(bookS.order!) - Int(bookD.order!))
+      bookS.order = max(Int(bookS.order!) + diff, Int(bookD.order!))
+      NSLog("\(bookS)\n\(bookD)")
+    } else {
+      NSLog("\n\nDragging up\n\n")
+    }
   }
   
   func bookAtIndexPath(indexPath: NSIndexPath) -> Book {

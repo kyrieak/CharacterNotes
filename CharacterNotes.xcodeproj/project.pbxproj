@@ -118,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34120B161C5DDC8D00936EB9 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				345997E31C4E04C30025D178 /* BookListFetchController.swift */,
+				345AA2121C55F46300B8E878 /* BooksTableDataSource.swift */,
+			);
+			name = DataSources;
+			sourceTree = "<group>";
+		};
 		348ACD6C1C4CDE0F001659A5 = {
 			isa = PBXGroup;
 			children = (
@@ -145,9 +154,8 @@
 				348ACD781C4CDE0F001659A5 /* AppDelegate.swift */,
 				345CE1131C5DC2D9003756DA /* Schema.xcdatamodeld */,
 				348ACD7E1C4CDE0F001659A5 /* Main.storyboard */,
-				345997E31C4E04C30025D178 /* BookListFetchController.swift */,
+				34120B161C5DDC8D00936EB9 /* DataSources */,
 				34D466331C520FEC00432C97 /* BookFetchController.swift */,
-				345AA2121C55F46300B8E878 /* BooksTableDataSource.swift */,
 				34943C621C56DC77008717C8 /* NavController.swift */,
 				348ACDBF1C4CE517001659A5 /* Controllers */,
 				348ACDBE1C4CE4B0001659A5 /* Models */,

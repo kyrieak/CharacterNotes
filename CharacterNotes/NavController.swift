@@ -55,4 +55,5 @@ class NavController: UINavigationController {
     
     return delegate.getDocumentContext()
   }
+  
 }

@@ -20,13 +20,14 @@ class BookListViewController: UITableViewController, NSFetchedResultsControllerD
     super.viewDidLoad()
     
     tableView.dataSource = dataSource
-    tableView.setEditing(true, animated: false)
   }
   
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if (indexPath.row < (tableView.numberOfRowsInSection(0) - 1)) {
       selectedList = dataSource.bookListAtIndexPath(indexPath)
+    } else {
+      selectedList = nil
     }
 
     performSegueWithIdentifier("segueToBooks", sender: nil)
