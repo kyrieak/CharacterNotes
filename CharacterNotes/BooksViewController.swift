@@ -18,6 +18,12 @@ class BooksViewController: UITableViewController, NSFetchedResultsControllerDele
   override func viewDidLoad() {
     tableView.dataSource = dataSource
     tableView.reloadData()
+
+    if (dataSource?.bookList == nil) {
+      navigationItem.title = "All Books"
+    } else {
+      navigationItem.title = "\(dataSource!.bookList!.name)"
+    }
     
     super.viewDidLoad()
   }

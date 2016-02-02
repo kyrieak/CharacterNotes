@@ -1,45 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F1021" minimumToolsVersion="Xcode 7.0">
-    <entity name="Book" representedClassName=".Book" syncable="YES">
-        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="book" inverseEntity="Character" syncable="YES"/>
-        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookList" inverseName="books" inverseEntity="BookList" syncable="YES"/>
+    <entity name="CNAuthor" representedClassName=".CNAuthor" syncable="YES">
+        <attribute name="birth" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passing" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNBook" inverseName="author" inverseEntity="CNBook" syncable="YES"/>
     </entity>
-    <entity name="BookList" representedClassName=".BookList" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="lists" inverseEntity="Book" syncable="YES"/>
+    <entity name="CNBook" representedClassName=".CNBook" syncable="YES">
+        <attribute name="finishedReading" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="publishDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="readOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="settingEndDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="settingStartDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" attributeType="String" minValueString="1" syncable="YES"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNAuthor" inverseName="books" inverseEntity="CNAuthor" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNCharacter" inverseName="book" inverseEntity="CNCharacter" syncable="YES"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNList" inverseName="books" inverseEntity="CNList" syncable="YES"/>
     </entity>
-    <entity name="Character" representedClassName=".CharacterProfile" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="characters" inverseEntity="Book" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CharacterGroup" inverseName="characters" inverseEntity="CharacterGroup" syncable="YES"/>
-        <relationship name="profileSections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProfileSection" inverseName="character" inverseEntity="ProfileSection" syncable="YES"/>
+    <entity name="CNCharacter" representedClassName=".CNCharacter" syncable="YES">
+        <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNBook" inverseName="characters" inverseEntity="CNBook" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNGroup" inverseName="characters" inverseEntity="CNGroup" syncable="YES"/>
+        <relationship name="headings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNHeading" inverseName="character" inverseEntity="CNHeading" syncable="YES"/>
     </entity>
-    <entity name="CharacterGroup" representedClassName=".CharacterGroup" syncable="YES">
+    <entity name="CNGroup" representedClassName=".CNGroup" syncable="YES">
         <attribute name="colorB" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="colorG" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="colorR" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="group" inverseEntity="Character" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNCharacter" inverseName="group" inverseEntity="CNCharacter" syncable="YES"/>
     </entity>
-    <entity name="ProfileQuote" representedClassName=".ProfileQuote" syncable="YES">
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="profileSection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProfileSection" inverseName="quotes" inverseEntity="ProfileSection" syncable="YES"/>
+    <entity name="CNHeading" representedClassName=".CNHeading" syncable="YES">
+        <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
+        <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNCharacter" inverseName="headings" inverseEntity="CNCharacter" syncable="YES"/>
+        <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNQuotation" inverseName="heading" inverseEntity="CNQuotation" syncable="YES"/>
     </entity>
-    <entity name="ProfileSection" representedClassName=".ProfileSection" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="profileSections" inverseEntity="Character" syncable="YES"/>
-        <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProfileQuote" inverseName="profileSection" inverseEntity="ProfileQuote" syncable="YES"/>
+    <entity name="CNList" representedClassName=".CNList" syncable="YES">
+        <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNBook" inverseName="lists" inverseEntity="CNBook" syncable="YES"/>
+    </entity>
+    <entity name="CNQuotation" representedClassName=".CNQuotation" syncable="YES">
+        <attribute name="pageNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="text" attributeType="String" minValueString="1" syncable="YES"/>
+        <relationship name="heading" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNHeading" inverseName="quotes" inverseEntity="CNHeading" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Book" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="BookList" positionX="-36" positionY="63" width="128" height="88"/>
-        <element name="Character" positionX="-54" positionY="9" width="128" height="105"/>
-        <element name="CharacterGroup" positionX="-36" positionY="54" width="128" height="120"/>
-        <element name="ProfileQuote" positionX="-36" positionY="18" width="128" height="75"/>
-        <element name="ProfileSection" positionX="9" positionY="81" width="128" height="90"/>
+        <element name="CNBook" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="CNList" positionX="-36" positionY="63" width="128" height="75"/>
+        <element name="CNCharacter" positionX="-54" positionY="9" width="128" height="105"/>
+        <element name="CNGroup" positionX="-36" positionY="54" width="128" height="120"/>
+        <element name="CNQuotation" positionX="-36" positionY="18" width="128" height="90"/>
+        <element name="CNHeading" positionX="9" positionY="81" width="128" height="90"/>
+        <element name="CNAuthor" positionX="-36" positionY="63" width="128" height="120"/>
     </elements>
 </model>

@@ -1,8 +1,8 @@
 //
-//  ProfileSection+CoreDataProperties.swift
+//  CNAuthor+CoreDataProperties.swift
 //  CharacterNotes
 //
-//  Created by Kyrie Kopczynski on 1/20/16.
+//  Created by Kyrie Kopczynski on 2/1/16.
 //  Copyright © 2016 KyrieKopczynski. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,10 +12,12 @@
 import Foundation
 import CoreData
 
-extension ProfileSection {
+extension CNAuthor {
 
-    @NSManaged var name: String?
-    @NSManaged var quotes: NSSet?
-    @NSManaged var character: CharacterProfile?
-
+    @NSManaged var firstName: String?
+    @NSManaged var lastName: String
+    @NSManaged var birth: NSDate?
+    @NSManaged var passing: NSDate?
+    @NSManaged var books: NSSet?
+  
 }

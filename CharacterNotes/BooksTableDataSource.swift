@@ -13,14 +13,14 @@ import CoreData
 
 class BooksTableDataSource: NSObject, UITableViewDataSource {
   typealias BookFC = BookFetchController
+  typealias Book   = CNBook
   
-  let documentContext = BooksTableDataSource.getDocumentContext()
-  var bookList: BookList?
+//  let documentContext = BooksTableDataSource.getDocumentContext()
+  var bookList: CNList?
   
   var booksInListFC: BookFC
-  var booksNotInListFC: BookFC?
   
-  private(set) var orderMin: Int?
+  private(set) var orderMin: Int = 0
   
   override init() {
     booksInListFC = BookFC()
@@ -30,23 +30,21 @@ class BooksTableDataSource: NSObject, UITableViewDataSource {
     performFetch(booksInListFC)
   }
   
-  init(list: BookList) {
+  init(list: CNList) {
     bookList = list
     booksInListFC = BookFC(inList: list)
-    booksNotInListFC = BookFC(notInList: list)
     
     super.init()
     
     performFetch(booksInListFC)
-    performFetch(booksNotInListFC!)
     
-    orderMin = Int((booksInListFC.fetchedObjects!.first! as! Book).order!)
-    
-    NSLog("==========================\n\(list.name)")
-    for obj in booksNotInListFC!.fetchedObjects! {
-      NSLog("\((obj as! Book).title!) is fetched ((Not-List)) and check: \(bookList!.books?.containsObject(obj))")
+    let firstBook = (booksInListFC.fetchedObjects!.first! as! Book)
+
+    if (firstBook.readOrder != nil) {
+      orderMin = Int(firstBook.readOrder!)
     }
-    NSLog("==========================")
+    
+    Log.withLine("-", msg: list.name)
   }
   
   
@@ -55,35 +53,34 @@ class BooksTableDataSource: NSObject, UITableViewDataSource {
       try fc.performFetch()
     } catch {
       let query = fc.fetchRequest.predicate?.predicateFormat
-
-      NSLog("performFetch for \n\(query)\nfailed:\n\(error)")
+      
+      Log.withSpace("performFetch for \n\(query)\nfailed:\n\(error)")
     }
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return ((bookList == nil) ? 1 : 2)
+    return 1
   }
   
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if (section == 0) {
-      
-      return booksInListFC.sections![0].numberOfObjects
-    } else {
-      return booksNotInListFC!.sections![0].numberOfObjects
-    }
+    return booksInListFC.sections![0].numberOfObjects
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("bookRow")!
     let book = bookAtIndexPath(indexPath)
     
-    if (Int(book.order!) < (orderMin! + indexPath.row)) {
-      book.order = (orderMin! + indexPath.row)
+    if (book.readOrder == nil) {
+      if (bookList == nil) {
+        book.readOrder = indexPath.row + 1
+      } else {
+        book.readOrder = orderMin + indexPath.row
+      }
     }
 
     cell.textLabel?.text       = book.title
-    cell.detailTextLabel?.text = book.author
+    cell.detailTextLabel?.text = book.author!.name
     
     return cell
   }
@@ -94,45 +91,34 @@ class BooksTableDataSource: NSObject, UITableViewDataSource {
   
   
   func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-    let bookS = bookAtIndexPath(sourceIndexPath)
-    let bookD = bookAtIndexPath(destinationIndexPath)
+//    let bookS = bookAtIndexPath(sourceIndexPath)
+//    let bookD = bookAtIndexPath(destinationIndexPath)
 
     if (sourceIndexPath.row < destinationIndexPath.row) {
-      NSLog("\n\nDragging down\n\n")
-      let (rowS, rowD) = (sourceIndexPath.row, destinationIndexPath.row)
-      let diffRow   = abs(rowS - rowD)
-      let diffOrder = abs(Int(bookS.order!) - Int(bookD.order!))
-      bookS.order = max(Int(bookS.order!) + diff, Int(bookD.order!))
-      NSLog("\(bookS)\n\(bookD)")
+      Log.withSpace("Dragging down")
     } else {
-      NSLog("\n\nDragging up\n\n")
+      Log.withSpace("Dragging up")
     }
   }
   
   func bookAtIndexPath(indexPath: NSIndexPath) -> Book {
-    
-    if (indexPath.section == 0) {
-      return (booksInListFC.objectAtIndexPath(indexPath) as! Book)
-    } else {
-      let idxPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
-      return (booksNotInListFC!.objectAtIndexPath(idxPath) as! Book)
-    }
+    return (booksInListFC.objectAtIndexPath(indexPath) as! Book)
   }
   
   
-  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    if (bookList != nil) {
-      return ((section == 0) ? bookList!.name : "Not In \(bookList!.name)")
-    } else {
-      return "All Books"
-    }
-  }
+//  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//    if (bookList != nil) {
+//      return ((section == 0) ? bookList!.name : "Not In \(bookList!.name)")
+//    } else {
+//      return "All Books"
+//    }
+//  }
   
-  private class func getDocumentContext() -> NSManagedObjectContext {
-    let delegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-    
-    return delegate.getDocumentContext()
-  }
+//  private class func getDocumentContext() -> NSManagedObjectContext {
+//    let delegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+//    
+//    return delegate.getDocumentContext()
+//  }
 }
 
 

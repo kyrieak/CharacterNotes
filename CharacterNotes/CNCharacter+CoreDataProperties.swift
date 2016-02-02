@@ -1,8 +1,8 @@
 //
-//  CharacterProfile+CoreDataProperties.swift
+//  CNCharacter+CoreDataProperties.swift
 //  CharacterNotes
 //
-//  Created by Kyrie Kopczynski on 1/30/16.
+//  Created by Kyrie Kopczynski on 2/1/16.
 //  Copyright © 2016 KyrieKopczynski. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,11 +12,11 @@
 import Foundation
 import CoreData
 
-extension CharacterProfile {
+extension CNCharacter {
 
-    @NSManaged var name: String?
-    @NSManaged var book: Book?
-    @NSManaged var group: CharacterGroup?
-    @NSManaged var profileSections: NSSet?
+    @NSManaged var name: String
+    @NSManaged var book: CNBook
+    @NSManaged var group: CNGroup?
+    @NSManaged var headings: NSSet?
 
 }

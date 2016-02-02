@@ -1,8 +1,8 @@
 //
-//  BookList.swift
+//  CNList.swift
 //  CharacterNotes
 //
-//  Created by Kyrie Kopczynski on 1/20/16.
+//  Created by Kyrie Kopczynski on 2/1/16.
 //  Copyright © 2016 KyrieKopczynski. All rights reserved.
 //
 
@@ -10,23 +10,21 @@ import Foundation
 import CoreData
 
 
-class BookList: NSManagedObject {
-
+class CNList: NSManagedObject {
 // Insert code here to add functionality to your managed object subclass
 
   convenience init(order: Int, context: NSManagedObjectContext) {
-    self.init(entity: BookList.entityDesc(context)!,
+    self.init(entity: CNList.entityDesc(context)!,
       insertIntoManagedObjectContext: context)
     
-    self.order = order
     self.name = "List No. \(order)"
   }
   
   class func entityDesc(context: NSManagedObjectContext) -> NSEntityDescription? {
-    return NSEntityDescription.entityForName("BookList", inManagedObjectContext: context)
+    return NSEntityDescription.entityForName("CNList", inManagedObjectContext: context)
   }
   
-  func addBooks(books: [Book]) {
+  func addBooks(books: [CNBook]) {
     self.mutableSetValueForKey("books").addObjectsFromArray(books)
   }
 }

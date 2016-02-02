@@ -23,7 +23,6 @@ class BookFetchController: NSFetchedResultsController {
   typealias SortDesc = NSSortDescriptor
   
   private var documentContext: NSManagedObjectContext
-  private let cacheFileName: String = "books"
   
   override init() {
     documentContext = BookFC.getDocumentContext()
@@ -34,7 +33,7 @@ class BookFetchController: NSFetchedResultsController {
   }
   
   
-  init(inList: BookList) {
+  init(inList: CNList) {
     documentContext = BookFC.getDocumentContext()
 
     super.init(fetchRequest: BookFC.requestBooksInList(inList),
@@ -43,7 +42,7 @@ class BookFetchController: NSFetchedResultsController {
   }
   
   
-  init(notInList: BookList) {
+  init(notInList: CNList) {
     documentContext = BookFC.getDocumentContext()
     
     super.init(fetchRequest: BookFC.requestBooksNotInList(notInList),
@@ -53,29 +52,29 @@ class BookFetchController: NSFetchedResultsController {
   
   
   class func requestAllBooks() -> NSFetchRequest {
-    let req = NSFetchRequest(entityName: "Book")
+    let req = NSFetchRequest(entityName: "CNBook")
     
-    req.sortDescriptors = [SortDesc(key: "order", asc: true)]
+    req.sortDescriptors = [SortDesc(key: "readOrder", asc: true)]
     
     return req
   }
   
   
-  class func requestBooksInList(list: BookList) -> NSFetchRequest {
-    let req = NSFetchRequest(entityName: "Book")
+  class func requestBooksInList(list: CNList) -> NSFetchRequest {
+    let req = NSFetchRequest(entityName: "CNBook")
     
     req.predicate = NSPredicate(format: "ANY lists == %@", list)
-    req.sortDescriptors = [SortDesc(key: "order", asc: true)]
+    req.sortDescriptors = [SortDesc(key: "readOrder", asc: true)]
     
     return req
   }
 
   
-  class func requestBooksNotInList(list: BookList) -> NSFetchRequest {
-    let req = NSFetchRequest(entityName: "Book")
+  class func requestBooksNotInList(list: CNList) -> NSFetchRequest {
+    let req = NSFetchRequest(entityName: "CNBook")
     
     req.predicate = NSPredicate(format: "NOT (SELF IN %@)", list.books!)
-    req.sortDescriptors = [SortDesc(key: "order", asc: true)]
+    req.sortDescriptors = [SortDesc(key: "readOrder", asc: true)]
     
     return req
   }

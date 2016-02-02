@@ -11,10 +11,10 @@ import UIKit
 import CoreData
 
 class BookListViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-  typealias BookListFC = BookListFetchController
+  typealias ListFC = ListFetchController
 
-  var selectedList: BookList?
-  var dataSource = BookListFC()
+  var selectedList: CNList?
+  var dataSource = ListsTableDataSource()
   
   override func viewDidLoad() {
     super.viewDidLoad()

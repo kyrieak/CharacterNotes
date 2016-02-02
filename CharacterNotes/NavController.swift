@@ -11,6 +11,9 @@ import UIKit
 import CoreData
 
 class NavController: UINavigationController {
+  typealias Book = CNBook
+  typealias List = CNList
+  
   required init?(coder aDecoder: NSCoder) {
     NavController.seed()
     
@@ -19,7 +22,6 @@ class NavController: UINavigationController {
   
   class func seed() {
     let context = getDocumentContext()
-
     let lists = seedLists(context)
     let books = seedBooks(context)
     // 4, 8, 3
@@ -28,15 +30,12 @@ class NavController: UINavigationController {
     lists[0].addBooks([books[0], books[1], books[2]])
     lists[1].addBooks([books[4], books[1], books[8]])
     lists[2].addBooks([books[6], books[2], books[0]])
-//    lists[0].books = NSSet(array: [books[0], books[1], books[2]])
-//    lists[1].books = NSSet(array: [books[4], books[1], books[8]])
-//    lists[2].books = NSSet(array: [books[6], books[2], books[0]])
   }
   
-  class func seedLists(context: NSManagedObjectContext) -> [BookList] {
-    return [BookList(order: 1, context: context),
-            BookList(order: 2, context: context),
-            BookList(order: 3, context: context)]
+  class func seedLists(context: NSManagedObjectContext) -> [List] {
+    return [List(order: 1, context: context),
+            List(order: 2, context: context),
+            List(order: 3, context: context)]
   }
   
   class func seedBooks(context: NSManagedObjectContext) -> [Book] {
