@@ -37,6 +37,7 @@
 		34943C631C56DC77008717C8 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34943C621C56DC77008717C8 /* NavController.swift */; };
 		34AA39E61C606FCB006536AB /* ListFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E51C606FCB006536AB /* ListFetchController.swift */; };
 		34AA39E81C607781006536AB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E71C607781006536AB /* Logger.swift */; };
+		34AA39EA1C6089CF006536AB /* Goodreads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E91C6089CF006536AB /* Goodreads.swift */; };
 		34D466341C520FEC00432C97 /* BookFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D466331C520FEC00432C97 /* BookFetchController.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		34943C621C56DC77008717C8 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		34AA39E51C606FCB006536AB /* ListFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFetchController.swift; sourceTree = "<group>"; };
 		34AA39E71C607781006536AB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		34AA39E91C6089CF006536AB /* Goodreads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goodreads.swift; sourceTree = "<group>"; };
 		34D466331C520FEC00432C97 /* BookFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFetchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 				343D23721C5F391E00D8AD8F /* Schema.xcdatamodeld */,
 				34120B161C5DDC8D00936EB9 /* DataSources */,
 				34AA39E51C606FCB006536AB /* ListFetchController.swift */,
+				34AA39E91C6089CF006536AB /* Goodreads.swift */,
 				34D466331C520FEC00432C97 /* BookFetchController.swift */,
 				348ACDBF1C4CE517001659A5 /* Controllers */,
 				348ACDBE1C4CE4B0001659A5 /* Models */,
@@ -362,6 +365,7 @@
 				348ACD7D1C4CDE0F001659A5 /* DetailViewController.swift in Sources */,
 				345AA2131C55F46300B8E878 /* BooksTableDataSource.swift in Sources */,
 				346C8BA11C5FFC9900FFB8EB /* CNHeading.swift in Sources */,
+				34AA39EA1C6089CF006536AB /* Goodreads.swift in Sources */,
 				343D23741C5F391E00D8AD8F /* Schema.xcdatamodeld in Sources */,
 				346C8BA91C5FFC9900FFB8EB /* CNCharacter.swift in Sources */,
 				348ACD7B1C4CDE0F001659A5 /* MasterViewController.swift in Sources */,

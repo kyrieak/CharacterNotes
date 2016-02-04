@@ -16,6 +16,16 @@ class NavController: UINavigationController {
   
   required init?(coder aDecoder: NSCoder) {
     NavController.seed()
+    let gr = Goodreads(userID: 51961635, saveContext: NavController.getDocumentContext())
+    
+    gr.session.dataTaskWithRequest(gr.getUserBooksRequest(), completionHandler: {(data: NSData?, resp: NSURLResponse?, error: NSError?) -> Void in
+      Log.withSpace("\(data)")
+      Log.withSpace("\(resp)")
+      Log.withSpace("\(error)")
+      let parser = NSXMLParser(data: data!)
+      parser.delegate = gr
+      parser.parse()
+    }).resume()
     
     super.init(coder: aDecoder)
   }

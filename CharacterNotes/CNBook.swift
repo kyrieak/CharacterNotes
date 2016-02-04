@@ -27,6 +27,13 @@ class CNBook: NSManagedObject {
     }
   }
   
+  convenience init(title: String, context: NSManagedObjectContext) {
+    self.init(entity: CNBook.entityDesc(context)!,
+      insertIntoManagedObjectContext: context)
+
+    self.title = title
+  }
+  
   class func entityDesc(context: NSManagedObjectContext) -> NSEntityDescription? {
     return NSEntityDescription.entityForName("CNBook", inManagedObjectContext: context)
   }
