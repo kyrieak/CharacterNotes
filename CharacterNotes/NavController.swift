@@ -10,25 +10,29 @@ import Foundation
 import UIKit
 import CoreData
 
-class NavController: UINavigationController {
+class NavController: UINavigationController, UINavigationControllerDelegate {
   typealias Book = CNBook
   typealias List = CNList
   
+  var gr: Goodreads
+  
   required init?(coder aDecoder: NSCoder) {
     NavController.seed()
-    let gr = Goodreads(userID: 51961635, saveContext: NavController.getDocumentContext())
+
+    gr = Goodreads(userID: 51961635, saveContext: NavController.getDocumentContext())
     
+    super.init(coder: aDecoder)
+    delegate = self
+
     gr.session.dataTaskWithRequest(gr.getUserBooksRequest(), completionHandler: {(data: NSData?, resp: NSURLResponse?, error: NSError?) -> Void in
-      Log.withSpace("\(data)")
       Log.withSpace("\(resp)")
       Log.withSpace("\(error)")
       let parser = NSXMLParser(data: data!)
-      parser.delegate = gr
+      parser.delegate = self.gr
       parser.parse()
     }).resume()
-    
-    super.init(coder: aDecoder)
   }
+  
   
   class func seed() {
     let context = getDocumentContext()
@@ -64,5 +68,24 @@ class NavController: UINavigationController {
     
     return delegate.getDocumentContext()
   }
+  
+  func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+    Log.withLine("*", msg: "\(viewController)")
+    
+    NSNotificationCenter.defaultCenter().addObserver(viewController, selector: Selector("goodReadsParseDone:"), name: "goodReadsParseDone", object: nil)
+  }
+  
+  
+//  func goodReadsParseDone(notification: NSNotification) {
+//    Log.withLine("=", msg: "did receive notif goodReadsParseDone")
+//    Log.withSpace("\(presentedViewController)")
+//    if (presentedViewController is BookListViewController) {
+//      Log.withSpace("presentedVC is a BookListViewController")
+//      let vc = (presentedViewController as! BookListViewController)
+//
+//      vc.dataSource.fetchController.fetchLists()
+//      vc.tableView.reloadData()
+//    }
+//  }
   
 }

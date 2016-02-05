@@ -19,9 +19,11 @@ class BookListViewController: UITableViewController, NSFetchedResultsControllerD
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    dataSource.fetchController.delegate = self
     tableView.dataSource = dataSource
   }
   
+
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if (indexPath.row < (tableView.numberOfRowsInSection(0) - 1)) {
@@ -55,5 +57,13 @@ class BookListViewController: UITableViewController, NSFetchedResultsControllerD
     } else {
       return sourceIndexPath
     }
+  }
+  
+  func goodReadsParseDone(notification: NSNotification) {
+    Log.withLine("=", msg: "Did GET HEREEEEE")
+    dataSource.refetch()
+    
+    tableView.reloadData()
+    Log.withSpace("\(tableView.numberOfRowsInSection(0))")
   }
 }

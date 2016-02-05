@@ -14,7 +14,7 @@ class ListsTableDataSource: NSObject, UITableViewDataSource {
   typealias ListFC = ListFetchController
   typealias SortDesc   = NSSortDescriptor
   
-  private var fetchController: ListFC
+  private(set) var fetchController: ListFC
   private(set) var numLists: Int
   
   var lastRow: Int {
@@ -38,6 +38,20 @@ class ListsTableDataSource: NSObject, UITableViewDataSource {
     numLists = ((numObjects == nil) ? 0 : numObjects!)
   }
   
+  
+  func refetch() {
+    do {
+      try fetchController.performFetch()
+    } catch {
+      NSLog("performFetch on Lists failed\n\n\(error)")
+    }
+    
+    let numObjects = fetchController.sections?.first?.numberOfObjects
+    
+    numLists = ((numObjects == nil) ? 0 : numObjects!)
+    Log.withSpace("\(numLists)")
+  }
+  
 //  
 //  func createBookList(order: Int) -> CNList {
 //    let list = (NSEntityDescription.insertNewObjectForEntityForName("CNList", inManagedObjectContext: documentContext) as! CNList)
@@ -47,6 +61,8 @@ class ListsTableDataSource: NSObject, UITableViewDataSource {
 //    return list
 //  }
 //  
+
+  
   
   func bookListAtIndexPath(indexPath: NSIndexPath) -> CNList {
     return (fetchController.objectAtIndexPath(indexPath) as! CNList)

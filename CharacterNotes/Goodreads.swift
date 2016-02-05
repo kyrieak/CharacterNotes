@@ -8,21 +8,31 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class Goodreads: NSObject, NSXMLParserDelegate {
   let userID: Int
   let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
   let saveContext: NSManagedObjectContext
-  private var bookInfo = [String: String]()
+//  private var bookInfo = [String: String]()
+  private var bookInfo   = GRBook()
+  private var authorInfo = GRAuthor()
+  private var shelfInfo  = GRShelf()
   private var isParsingBookInfo = false
   private var currentKey: String = ""
   private var currentBook: CNBook?
+  private var currentShelves: [CNList] = []
   private var authorName = ""
+  
+  private var listByShelfID = [Int: CNList]()
   
   init(userID: Int, saveContext: NSManagedObjectContext) {
     self.userID = userID
     self.saveContext = saveContext
+
+    super.init()
   }
+  
   
   class func queryItems() -> [NSURLQueryItem] {
     var items: [NSURLQueryItem] = [NSURLQueryItem(name: "id", value: "51961635")]
@@ -61,7 +71,7 @@ class Goodreads: NSObject, NSXMLParserDelegate {
   func dostuff() {
     NSLog("did get here")
     let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
-    
+
     session.dataTaskWithURL(getUserBooksURL(), completionHandler: {(data: NSData?, resp: NSURLResponse?, error: NSError?) -> Void in
       Log.withSpace("am i handling?")
       Log.withLine("-", msg: "\(data?.description)")
@@ -81,6 +91,22 @@ class Goodreads: NSObject, NSXMLParserDelegate {
     switch(elementName) {
       case "book":
         isParsingBookInfo = true
+      case "shelf":
+        if (attributeDict["review_shelf_id"] != nil) {
+          shelfInfo.grID = Int(trimWhiteSpace(attributeDict["review_shelf_id"]!))
+          shelfInfo.name = trimWhiteSpace(attributeDict["name"]!)
+
+          let shelf: CNList
+
+          if (listByShelfID[shelfInfo.grID!] == nil) {
+            shelf = CNList(name: "\(shelfInfo.name)", context: saveContext)
+          } else {
+            shelf = listByShelfID[shelfInfo.grID!]!
+          }
+
+          currentShelves.append(shelf)
+          Log.withLine("=", msg:"\(currentShelves)")
+        }
       default:
         if (isParsingBookInfo) {
           currentKey = elementName
@@ -88,23 +114,32 @@ class Goodreads: NSObject, NSXMLParserDelegate {
     }
   }
   
+  func trimWhiteSpace(text: String) -> String {
+    return text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+  }
+  
   func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
     switch(elementName) {
     case "book":
       isParsingBookInfo = false
       Log.withLine("-", msg: "\(currentBook?.title)\n\(currentBook?.author?.name)")
-      bookInfo["title"] = nil
-      bookInfo["name"]  = nil
     case "title":
-      let bookTitle = bookInfo["title"]?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-      if (bookTitle != nil) {
-        currentBook = CNBook(title: bookTitle!, context: saveContext)
-      }
+      bookInfo.title = bookInfo.title.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      currentBook = CNBook(title: bookInfo.title, context: saveContext)
+      
     case "name":
-      let authorName = bookInfo["name"]?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-      if (authorName != nil) {
-        currentBook!.author = CNAuthor(firstName: nil, lastName: authorName!, context: saveContext)
+      authorInfo.name = authorInfo.name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      currentBook!.author = CNAuthor(firstName: nil, lastName: authorInfo.name, context: saveContext)
+
+    case "review":
+      for list in currentShelves {
+        list.addBooks([currentBook!])
       }
+
+      currentBook = nil
+      currentShelves = []
+      bookInfo.title = ""
+      authorInfo.name = ""
     default:
       doNothing()
     }
@@ -116,17 +151,26 @@ class Goodreads: NSObject, NSXMLParserDelegate {
   func parser(parser: NSXMLParser, foundCharacters string: String) {
     if (isParsingBookInfo) {
       switch(currentKey) {
-        case "title", "name":
-          if (bookInfo[currentKey] == nil) {
-            bookInfo[currentKey] = string
+        case "title":
+          if (bookInfo.title == "") {
+            bookInfo.title = string
           } else {
-            bookInfo[currentKey]! += string
-        }
+            bookInfo.title += string
+          }
+        case "name":
+          if (authorInfo.name == "") {
+            authorInfo.name = string
+          } else {
+            authorInfo.name += string
+          }
         default:
-        doNothing()
+          doNothing()
       }
     }
   }
   
+  func parserDidEndDocument(parser: NSXMLParser) {
+    NSNotificationCenter.defaultCenter().postNotificationName("goodReadsParseDone", object: nil)
+  }
 }
 

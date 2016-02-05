@@ -19,6 +19,13 @@ class CNList: NSManagedObject {
     
     self.name = "List No. \(order)"
   }
+
+  convenience init(name: String, context: NSManagedObjectContext) {
+    self.init(entity: CNList.entityDesc(context)!,
+      insertIntoManagedObjectContext: context)
+    
+    self.name = name
+  }
   
   class func entityDesc(context: NSManagedObjectContext) -> NSEntityDescription? {
     return NSEntityDescription.entityForName("CNList", inManagedObjectContext: context)
