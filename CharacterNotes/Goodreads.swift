@@ -42,6 +42,7 @@ class Goodreads: NSObject, NSXMLParserDelegate {
     return items
   }
   
+  
   func getUserBooksURL() -> NSURL {
     var url = "https://www.goodreads.com/review/list"
     

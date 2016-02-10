@@ -3,8 +3,70 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Auth View Controller-->
+        <scene sceneID="Pix-cJ-P8x">
+            <objects>
+                <viewController id="SD6-IP-1V5" customClass="GRAuthViewController" customModule="CharacterNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sne-Ka-qWp"/>
+                        <viewControllerLayoutGuide type="bottom" id="pjA-c0-XlH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bon-dj-Ao3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsc-4R-Vsw">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nsc-4R-Vsw" secondAttribute="height" multiplier="9:11" id="Lt1-5y-hDr"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Lt1-5y-hDr"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Lt1-5y-hDr"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="SD6-IP-1V5" id="Z2M-4H-mVi"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nsc-4R-Vsw" firstAttribute="centerX" secondItem="bon-dj-Ao3" secondAttribute="centerX" id="8BW-Rq-eMG"/>
+                            <constraint firstItem="nsc-4R-Vsw" firstAttribute="centerY" secondItem="bon-dj-Ao3" secondAttribute="centerY" id="eM8-FX-4p9"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="nsc-4R-Vsw" secondAttribute="leading" id="lnF-Ac-6Tk"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8BW-Rq-eMG"/>
+                                <exclude reference="eM8-FX-4p9"/>
+                                <exclude reference="lnF-Ac-6Tk"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="8BW-Rq-eMG"/>
+                                <include reference="eM8-FX-4p9"/>
+                                <include reference="lnF-Ac-6Tk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="K4V-6N-hNt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ja5-3O-SRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2515.5" y="424.5"/>
+        </scene>
         <!--Nav Controller-->
         <scene sceneID="ndQ-KJ-Uj7">
             <objects>
@@ -14,7 +76,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="RbG-Fb-EJU" kind="relationship" relationship="rootViewController" id="qHh-2a-SMe"/>
+                        <segue destination="SD6-IP-1V5" kind="show" identifier="oauthSegue" id="IsS-0V-ECH"/>
+                        <segue destination="SD6-IP-1V5" kind="relationship" relationship="rootViewController" id="6p3-cV-ylK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhV-sH-vhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -117,4 +180,7 @@
             <point key="canvasLocation" x="-844.5" y="-330"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="IsS-0V-ECH"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -17,20 +17,20 @@ class NavController: UINavigationController, UINavigationControllerDelegate {
   var gr: Goodreads
   
   required init?(coder aDecoder: NSCoder) {
-    NavController.seed()
+//    NavController.seed()
 
     gr = Goodreads(userID: 51961635, saveContext: NavController.getDocumentContext())
     
     super.init(coder: aDecoder)
     delegate = self
 
-    gr.session.dataTaskWithRequest(gr.getUserBooksRequest(), completionHandler: {(data: NSData?, resp: NSURLResponse?, error: NSError?) -> Void in
-      Log.withSpace("\(resp)")
-      Log.withSpace("\(error)")
-      let parser = NSXMLParser(data: data!)
-      parser.delegate = self.gr
-      parser.parse()
-    }).resume()
+//    gr.session.dataTaskWithRequest(gr.getUserBooksRequest(), completionHandler: {(data: NSData?, resp: NSURLResponse?, error: NSError?) -> Void in
+//      Log.withSpace("\(resp)")
+//      Log.withSpace("\(error)")
+//      let parser = NSXMLParser(data: data!)
+//      parser.delegate = self.gr
+//      parser.parse()
+//    }).resume()
   }
   
   

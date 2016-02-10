@@ -40,6 +40,8 @@
 		34AA39E81C607781006536AB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E71C607781006536AB /* Logger.swift */; };
 		34AA39EA1C6089CF006536AB /* Goodreads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E91C6089CF006536AB /* Goodreads.swift */; };
 		34D466341C520FEC00432C97 /* BookFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D466331C520FEC00432C97 /* BookFetchController.swift */; };
+		34DCDA8D1C653661000445EA /* GRAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCDA8C1C653661000445EA /* GRAuthViewController.swift */; };
+		34DCDA8F1C65794C000445EA /* GRAuthSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCDA8E1C65794C000445EA /* GRAuthSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		34AA39E71C607781006536AB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		34AA39E91C6089CF006536AB /* Goodreads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goodreads.swift; sourceTree = "<group>"; };
 		34D466331C520FEC00432C97 /* BookFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFetchController.swift; sourceTree = "<group>"; };
+		34DCDA8C1C653661000445EA /* GRAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRAuthViewController.swift; sourceTree = "<group>"; };
+		34DCDA8E1C65794C000445EA /* GRAuthSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRAuthSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,8 @@
 				34120B161C5DDC8D00936EB9 /* DataSources */,
 				34AA39E51C606FCB006536AB /* ListFetchController.swift */,
 				34AA39E91C6089CF006536AB /* Goodreads.swift */,
+				34DCDA8C1C653661000445EA /* GRAuthViewController.swift */,
+				34DCDA8E1C65794C000445EA /* GRAuthSession.swift */,
 				3493E7D91C63262800A7E298 /* GRBook.swift */,
 				34D466331C520FEC00432C97 /* BookFetchController.swift */,
 				348ACDBF1C4CE517001659A5 /* Controllers */,
@@ -371,6 +377,7 @@
 				346C8BA11C5FFC9900FFB8EB /* CNHeading.swift in Sources */,
 				34AA39EA1C6089CF006536AB /* Goodreads.swift in Sources */,
 				343D23741C5F391E00D8AD8F /* Schema.xcdatamodeld in Sources */,
+				34DCDA8D1C653661000445EA /* GRAuthViewController.swift in Sources */,
 				346C8BA91C5FFC9900FFB8EB /* CNCharacter.swift in Sources */,
 				348ACD7B1C4CDE0F001659A5 /* MasterViewController.swift in Sources */,
 				346C8BAA1C5FFC9900FFB8EB /* CNQuotation+CoreDataProperties.swift in Sources */,
@@ -378,6 +385,7 @@
 				346C8B9E1C5FFC9900FFB8EB /* CNList+CoreDataProperties.swift in Sources */,
 				348ACD791C4CDE0F001659A5 /* AppDelegate.swift in Sources */,
 				346C8BA51C5FFC9900FFB8EB /* CNGroup.swift in Sources */,
+				34DCDA8F1C65794C000445EA /* GRAuthSession.swift in Sources */,
 				346C8BA71C5FFC9900FFB8EB /* CNAuthor.swift in Sources */,
 				346C8BA81C5FFC9900FFB8EB /* CNCharacter+CoreDataProperties.swift in Sources */,
 				345997E41C4E04C30025D178 /* ListsTableDataSource.swift in Sources */,
