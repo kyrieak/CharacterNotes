@@ -14,23 +14,11 @@ class NavController: UINavigationController, UINavigationControllerDelegate {
   typealias Book = CNBook
   typealias List = CNList
   
-  var gr: Goodreads
-  
   required init?(coder aDecoder: NSCoder) {
-//    NavController.seed()
+    NavController.seed()
 
-    gr = Goodreads(userID: 51961635, saveContext: NavController.getDocumentContext())
-    
     super.init(coder: aDecoder)
     delegate = self
-
-//    gr.session.dataTaskWithRequest(gr.getUserBooksRequest(), completionHandler: {(data: NSData?, resp: NSURLResponse?, error: NSError?) -> Void in
-//      Log.withSpace("\(resp)")
-//      Log.withSpace("\(error)")
-//      let parser = NSXMLParser(data: data!)
-//      parser.delegate = self.gr
-//      parser.parse()
-//    }).resume()
   }
   
   
@@ -63,29 +51,23 @@ class NavController: UINavigationController, UINavigationControllerDelegate {
     return books
   }
   
+  class func seedHeadings(context: NSManagedObjectContext) -> [CNHeading] {
+    let h1 = CNHeading(name: "Visual Traits", context: context)
+    let h2 = CNHeading(name: "Vocal Traits", context: context)
+    let h3 = CNHeading(name: "Olfactory Traits", context: context)
+    let h4 = CNHeading(name: "Personality", context: context)
+    let h5 = CNHeading(name: "Years, Dates, Times", context: context)
+    
+    return [h1, h2, h3, h4, h5]
+  }
+
+  func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+    Log.withLine("*", msg: "\(viewController)\nand nav controller is: \(viewController.navigationController)")
+  }
+  
   private class func getDocumentContext() -> NSManagedObjectContext {
     let delegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     return delegate.getDocumentContext()
   }
-  
-  func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-    Log.withLine("*", msg: "\(viewController)")
-    
-    NSNotificationCenter.defaultCenter().addObserver(viewController, selector: Selector("goodReadsParseDone:"), name: "goodReadsParseDone", object: nil)
-  }
-  
-  
-//  func goodReadsParseDone(notification: NSNotification) {
-//    Log.withLine("=", msg: "did receive notif goodReadsParseDone")
-//    Log.withSpace("\(presentedViewController)")
-//    if (presentedViewController is BookListViewController) {
-//      Log.withSpace("presentedVC is a BookListViewController")
-//      let vc = (presentedViewController as! BookListViewController)
-//
-//      vc.dataSource.fetchController.fetchLists()
-//      vc.tableView.reloadData()
-//    }
-//  }
-  
 }

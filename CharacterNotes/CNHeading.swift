@@ -14,4 +14,11 @@ class CNHeading: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
+  convenience init(name: String, context: NSManagedObjectContext) {
+    self.init(entity: CNHeading.entityDesc(context)!, insertIntoManagedObjectContext: context)
+  }
+  
+  class func entityDesc(context: NSManagedObjectContext) -> NSEntityDescription? {
+    return NSEntityDescription.entityForName("CNHeading", inManagedObjectContext: context)
+  }
 }

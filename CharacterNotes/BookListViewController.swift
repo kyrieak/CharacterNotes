@@ -58,12 +58,4 @@ class BookListViewController: UITableViewController, NSFetchedResultsControllerD
       return sourceIndexPath
     }
   }
-  
-  func goodReadsParseDone(notification: NSNotification) {
-    Log.withLine("=", msg: "Did GET HEREEEEE")
-    dataSource.refetch()
-    
-    tableView.reloadData()
-    Log.withSpace("\(tableView.numberOfRowsInSection(0))")
-  }
 }
