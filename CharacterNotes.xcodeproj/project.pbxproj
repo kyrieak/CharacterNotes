@@ -38,6 +38,7 @@
 		348ACD901C4CDE0F001659A5 /* CharacterNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348ACD8F1C4CDE0F001659A5 /* CharacterNotesTests.swift */; };
 		348ACD9B1C4CDE10001659A5 /* CharacterNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348ACD9A1C4CDE10001659A5 /* CharacterNotesUITests.swift */; };
 		34943C631C56DC77008717C8 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34943C621C56DC77008717C8 /* NavController.swift */; };
+		34979A201C7296310065CC75 /* SummaryInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34979A1F1C7296310065CC75 /* SummaryInfoController.swift */; };
 		34AA39E61C606FCB006536AB /* ListFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E51C606FCB006536AB /* ListFetchController.swift */; };
 		34AA39E81C607781006536AB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E71C607781006536AB /* Logger.swift */; };
 		34BFD4F91C6C628B00F4E5F5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BFD4F81C6C628B00F4E5F5 /* TestViewController.swift */; };
@@ -100,6 +101,7 @@
 		348ACD9A1C4CDE10001659A5 /* CharacterNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNotesUITests.swift; sourceTree = "<group>"; };
 		348ACD9C1C4CDE10001659A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34943C621C56DC77008717C8 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		34979A1F1C7296310065CC75 /* SummaryInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryInfoController.swift; sourceTree = "<group>"; };
 		34AA39E51C606FCB006536AB /* ListFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFetchController.swift; sourceTree = "<group>"; };
 		34AA39E71C607781006536AB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		34BFD4F81C6C628B00F4E5F5 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				348ACD7A1C4CDE0F001659A5 /* MasterViewController.swift */,
 				348ACD7C1C4CDE0F001659A5 /* DetailViewController.swift */,
 				3410BAC61C71B480000A3957 /* SummaryViewController.swift */,
+				34979A1F1C7296310065CC75 /* SummaryInfoController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				346ACA0B1C5315420063F071 /* BooksViewController.swift in Sources */,
 				346C8B9E1C5FFC9900FFB8EB /* CNList+CoreDataProperties.swift in Sources */,
 				348ACD791C4CDE0F001659A5 /* AppDelegate.swift in Sources */,
+				34979A201C7296310065CC75 /* SummaryInfoController.swift in Sources */,
 				346C8BA51C5FFC9900FFB8EB /* CNGroup.swift in Sources */,
 				348649C01C6BD25400E786DD /* CharacterViewController.swift in Sources */,
 				3410BAC71C71B480000A3957 /* SummaryViewController.swift in Sources */,

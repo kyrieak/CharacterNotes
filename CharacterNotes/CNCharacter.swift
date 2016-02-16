@@ -16,11 +16,11 @@ class CNCharacter: NSManagedObject {
   }
   
   var depictedAge: YearRange {
-    return YearRange(min: ageRangeMin?.integerValue, max: ageRangeMax?.integerValue, isEstimate: ageRangeIsEstimate?.boolValue)
+    return YearRange(min: ageRangeMin?.integerValue, max: ageRangeMax?.integerValue, isEstimate: (ageRangeIsEstimate?.boolValue ?? true))
   }
   
-  var depictedYear: YearRange {
-    return YearRange(min: yearRangeMin?.integerValue, max: yearRangeMax?.integerValue, isEstimate: yearRangeIsEstimate?.boolValue)
+  var timePeriod: YearRange {
+    return YearRange(min: yearRangeMin?.integerValue, max: yearRangeMax?.integerValue, isEstimate: (yearRangeIsEstimate?.boolValue ?? true))
   }
   
   private func allNames() -> [String] {
@@ -39,13 +39,52 @@ class CNCharacter: NSManagedObject {
     return names
   }
   
+  var pronounStr: String? {
+    if (pronoun == nil) {
+      return nil
+    } else {
+      switch(pronoun!.integerValue) {
+        case Pronoun.She.rawValue:
+          return "She"
+        case Pronoun.He.rawValue:
+          return "He"
+        default:
+          return "Other"
+      }
+    }
+  }
+  
+  
+  convenience init(context: NSManagedObjectContext) {
+    self.init(entity: CNCharacter.entityDesc(context)!,
+                insertIntoManagedObjectContext: context)
+  }
+  
+  class func entityDesc(context: NSManagedObjectContext) -> NSEntityDescription? {
+    return NSEntityDescription.entityForName("CNCharacter", inManagedObjectContext: context)
+  }
+  
 // Insert code here to add functionality to your managed object subclass
 }
 
 struct YearRange {
   var min: Int?
   var max: Int?
-  var isEstimate: Bool?
+  var isEstimate: Bool
+  
+  var noInfo: Bool {
+    return ((min ?? max) == nil)
+  }
+  
+  var isRanged: Bool {
+    return (max != min)
+  }
+  
+  init(min: Int?, max: Int?, isEstimate: Bool?) {
+    self.min = (min ?? max)
+    self.max = (max ?? min)
+    self.isEstimate = (isEstimate ?? true)
+  }
 }
 
 
