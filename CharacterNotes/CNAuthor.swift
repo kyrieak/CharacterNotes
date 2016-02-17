@@ -15,10 +15,14 @@ class CNAuthor: NSManagedObject {
 // Insert code here to add functionality to your managed object subclass
 
   var name: String {
-    if (firstName == nil) {
-      return lastName
+    if ((firstName ?? lastName) == nil) {
+      return ""
+    } else if (lastName == nil) {
+      return firstName!
+    } else if (firstName == nil) {
+      return lastName!
     } else {
-      return "\(firstName) \(lastName)"
+      return "\(firstName!) \(lastName!)"
     }
   }
   

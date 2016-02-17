@@ -11,19 +11,36 @@ import CoreData
 
 
 class CNCharacter: NSManagedObject {
-  var fullName: String {
-    return allNames().joinWithSeparator(" ")
+  
+  // - MARK: - private
+  
+  private var yearMin: NSNumber? {
+    return (self.yearRangeMin ?? self.book?.yearRangeMin)
   }
   
-  var depictedAge: YearRange {
-    return YearRange(min: ageRangeMin?.integerValue, max: ageRangeMax?.integerValue, isEstimate: (ageRangeIsEstimate?.boolValue ?? true))
+  private var yearMax: NSNumber? {
+    return (self.yearRangeMax ?? self.book?.yearRangeMax)
   }
   
-  var timePeriod: YearRange {
-    return YearRange(min: yearRangeMin?.integerValue, max: yearRangeMax?.integerValue, isEstimate: (yearRangeIsEstimate?.boolValue ?? true))
+  private var yearIsEst: Bool {
+    if (self.yearRangeIsEstimate != nil) {
+      return self.yearRangeIsEstimate!.boolValue
+    } else {
+      return (self.book?.yearRangeIsEstimate?.boolValue ?? true)
+    }
   }
+
   
-  private func allNames() -> [String] {
+  // - MARK: - Initializer
+
+  convenience init(context: NSManagedObjectContext) {
+    self.init(entity: CNCharacter.entityDesc(context)!,
+                insertIntoManagedObjectContext: context)
+  }
+
+  // - MARK: - Instance
+
+  func allNames() -> [String] {
     var names: [String] = []
     
     if (firstName != nil) {
@@ -39,31 +56,25 @@ class CNCharacter: NSManagedObject {
     return names
   }
   
-  var pronounStr: String? {
-    if (pronoun == nil) {
-      return nil
-    } else {
-      switch(pronoun!.integerValue) {
-        case Pronoun.She.rawValue:
-          return "She"
-        case Pronoun.He.rawValue:
-          return "He"
-        default:
-          return "Other"
-      }
-    }
+  func getFullName() -> String {
+    return allNames().joinWithSeparator(" ")
   }
   
-  
-  convenience init(context: NSManagedObjectContext) {
-    self.init(entity: CNCharacter.entityDesc(context)!,
-                insertIntoManagedObjectContext: context)
+  func getAgeRange() -> YearRange {
+    return YearRange(min: ageRangeMin?.integerValue, max: ageRangeMax?.integerValue, isEstimate: (ageRangeIsEstimate?.boolValue ?? true))
   }
   
+  func getTimePeriod() -> YearRange {
+    return YearRange(min: self.yearMin?.integerValue, max: self.yearMax?.integerValue, isEstimate: self.yearIsEst)
+  }
+  
+  // - MARK: - Class
+
   class func entityDesc(context: NSManagedObjectContext) -> NSEntityDescription? {
     return NSEntityDescription.entityForName("CNCharacter", inManagedObjectContext: context)
   }
-  
+
+  // - MARK: -
 // Insert code here to add functionality to your managed object subclass
 }
 
@@ -85,15 +96,4 @@ struct YearRange {
     self.max = (max ?? min)
     self.isEstimate = (isEstimate ?? true)
   }
-}
-
-
-enum Pronoun: Int {
-  case She   = 0
-  case He    = 1
-  case Other = 2
-}
-
-struct CharacterInfo {
-  var firstName, middleName, lastName: String?
 }

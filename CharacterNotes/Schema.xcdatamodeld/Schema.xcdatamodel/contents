@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F1021" minimumToolsVersion="Xcode 7.0">
     <entity name="CNAuthor" representedClassName=".CNAuthor" syncable="YES">
-        <attribute name="birth" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateRangeMax" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateRangeMin" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="passing" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNBook" inverseName="author" inverseEntity="CNBook" syncable="YES"/>
     </entity>
     <entity name="CNBook" representedClassName=".CNBook" syncable="YES">
-        <attribute name="finishedReading" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="finishedReading" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="publishDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="readOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="settingEndDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="settingStartDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" attributeType="String" minValueString="1" syncable="YES"/>
+        <attribute name="yearRangeIsEstimate" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="yearRangeMax" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="yearRangeMin" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CNAuthor" inverseName="books" inverseEntity="CNAuthor" syncable="YES"/>
         <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNCharacter" inverseName="book" inverseEntity="CNCharacter" syncable="YES"/>
         <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNList" inverseName="books" inverseEntity="CNList" syncable="YES"/>
@@ -25,7 +26,7 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="middleName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pronoun" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="2" syncable="YES"/>
+        <attribute name="species" optional="YES" attributeType="String" defaultValueString="Human" syncable="YES"/>
         <attribute name="yearRangeIsEstimate" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="yearRangeMax" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="yearRangeMin" optional="YES" attributeType="Integer 16" syncable="YES"/>
@@ -49,6 +50,12 @@
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CNBook" inverseName="lists" inverseEntity="CNBook" syncable="YES"/>
     </entity>
+    <entity name="CNLocation" representedClassName=".CNLocation" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="regionScale" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="CNQuotation" representedClassName=".CNQuotation" syncable="YES">
         <attribute name="pageNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="text" attributeType="String" minValueString="1" syncable="YES"/>
@@ -56,11 +63,12 @@
     </entity>
     <elements>
         <element name="CNAuthor" positionX="-36" positionY="63" width="128" height="120"/>
-        <element name="CNBook" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="CNBook" positionX="-63" positionY="-18" width="128" height="195"/>
         <element name="CNCharacter" positionX="-54" positionY="9" width="128" height="240"/>
         <element name="CNGroup" positionX="-36" positionY="54" width="128" height="120"/>
         <element name="CNHeading" positionX="9" positionY="81" width="128" height="90"/>
         <element name="CNList" positionX="-36" positionY="63" width="128" height="75"/>
+        <element name="CNLocation" positionX="-36" positionY="108" width="128" height="105"/>
         <element name="CNQuotation" positionX="-36" positionY="18" width="128" height="90"/>
     </elements>
 </model>

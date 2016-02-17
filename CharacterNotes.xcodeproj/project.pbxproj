@@ -39,6 +39,8 @@
 		348ACD9B1C4CDE10001659A5 /* CharacterNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348ACD9A1C4CDE10001659A5 /* CharacterNotesUITests.swift */; };
 		34943C631C56DC77008717C8 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34943C621C56DC77008717C8 /* NavController.swift */; };
 		34979A201C7296310065CC75 /* SummaryInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34979A1F1C7296310065CC75 /* SummaryInfoController.swift */; };
+		349AE7331C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349AE7311C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift */; };
+		349AE7341C740AD700D4BCD2 /* CNLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349AE7321C740AD700D4BCD2 /* CNLocation.swift */; };
 		34AA39E61C606FCB006536AB /* ListFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E51C606FCB006536AB /* ListFetchController.swift */; };
 		34AA39E81C607781006536AB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E71C607781006536AB /* Logger.swift */; };
 		34BFD4F91C6C628B00F4E5F5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BFD4F81C6C628B00F4E5F5 /* TestViewController.swift */; };
@@ -102,6 +104,8 @@
 		348ACD9C1C4CDE10001659A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34943C621C56DC77008717C8 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		34979A1F1C7296310065CC75 /* SummaryInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryInfoController.swift; sourceTree = "<group>"; };
+		349AE7311C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CNLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		349AE7321C740AD700D4BCD2 /* CNLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNLocation.swift; sourceTree = "<group>"; };
 		34AA39E51C606FCB006536AB /* ListFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFetchController.swift; sourceTree = "<group>"; };
 		34AA39E71C607781006536AB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		34BFD4F81C6C628B00F4E5F5 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 		348ACDBE1C4CE4B0001659A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				349AE7311C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift */,
+				349AE7321C740AD700D4BCD2 /* CNLocation.swift */,
 				346C8B901C5FFC9900FFB8EB /* CNList+CoreDataProperties.swift */,
 				346C8B911C5FFC9900FFB8EB /* CNList.swift */,
 				346C8B921C5FFC9900FFB8EB /* CNHeading+CoreDataProperties.swift */,
@@ -379,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				346C8BA31C5FFC9900FFB8EB /* CNBook.swift in Sources */,
+				349AE7331C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift in Sources */,
 				34AA39E61C606FCB006536AB /* ListFetchController.swift in Sources */,
 				341F9DD91C6C449E007226AD /* MarqueeTextView.swift in Sources */,
 				346C8BAB1C5FFC9900FFB8EB /* CNQuotation.swift in Sources */,
@@ -404,6 +411,7 @@
 				3410BAC71C71B480000A3957 /* SummaryViewController.swift in Sources */,
 				346C8BA71C5FFC9900FFB8EB /* CNAuthor.swift in Sources */,
 				346C8BA81C5FFC9900FFB8EB /* CNCharacter+CoreDataProperties.swift in Sources */,
+				349AE7341C740AD700D4BCD2 /* CNLocation.swift in Sources */,
 				345997E41C4E04C30025D178 /* ListsTableDataSource.swift in Sources */,
 				346C8BA41C5FFC9900FFB8EB /* CNGroup+CoreDataProperties.swift in Sources */,
 				341956511C51714200F1810B /* BookListViewController.swift in Sources */,

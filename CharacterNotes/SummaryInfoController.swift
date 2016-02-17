@@ -23,24 +23,24 @@ class SummaryInfoController: UIViewController, UITableViewDataSource, UITableVie
     character.ageRangeIsEstimate = true
     character.yearRangeMin = 1880
     character.yearRangeMax = 1900
-    character.yearRangeIsEstimate = true
-//    character.pronoun = Pronoun.She.rawValue
+    character.yearRangeIsEstimate = false
 
-    if (character.fullName != "") {
+    if (character.getFullName() != "") {
       displayRowIDs.append("nameRow")
     }
 
-    if (character.pronoun != nil) {
-      displayRowIDs.append("pronounRow")
-    }
-    
-    if (!character.depictedAge.noInfo) {
+    if (!character.getAgeRange().noInfo) {
       displayRowIDs.append("ageRow")
     }
-    
-    if (!character.timePeriod.noInfo) {
+
+    if (!character.getTimePeriod().noInfo) {
       displayRowIDs.append("yearRow")
     }
+    
+    if (true) {
+      displayRowIDs.append("regionRow")
+    }
+    
     
     super.init(coder: aDecoder)
   }
@@ -60,15 +60,40 @@ class SummaryInfoController: UIViewController, UITableViewDataSource, UITableVie
   }
   
   func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    if (cell.reuseIdentifier != nil) {
+      switch(cell.reuseIdentifier!) {
+        case "ageRow":
+          let label = (cell.viewWithTag(2) as! UILabel)
+          let astLabel = (cell.viewWithTag(3))
+          let age = character.getAgeRange()
+          
+          if (age.isRanged) {
+            label.text = "\(age.min!) - \(age.max!)"
+          } else {
+            label.text = "\(age.min!)"
+          }
+          
+          astLabel?.hidden = (!age.isEstimate)
+        case "yearRow":
+          let label = (cell.viewWithTag(2) as! UILabel)
+          let astLabel = (cell.viewWithTag(3))
+          let tp = character.getTimePeriod()
+          
+          if (tp.isRanged) {
+            label.text = "\(tp.min!) - \(tp.max!)"
+          } else {
+            label.text = "\(tp.min!)"
+          }
+          astLabel?.hidden = (!tp.isEstimate)
+        default:
+          Log.withSpace("default case cell reuseID")
+      }
+    }
     if (cell.reuseIdentifier == "yearRow") {
       let label = (cell.viewWithTag(2) as! UILabel)
-      let tp = character.timePeriod
+      let tp = character.getTimePeriod()
       
-      if (tp.noInfo) {
-        Log.withSpace("here in noInfo")
-        // should delegate to book info
-        label.text = "1690 - 1700"
-      } else if (tp.isRanged) {
+      if (tp.isRanged) {
         Log.withSpace("here in is ranged")
         label.text = "\(tp.min!) - \(tp.max!)"
       } else {

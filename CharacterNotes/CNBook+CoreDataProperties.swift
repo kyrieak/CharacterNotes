@@ -2,7 +2,7 @@
 //  CNBook+CoreDataProperties.swift
 //  CharacterNotes
 //
-//  Created by Kyrie Kopczynski on 2/1/16.
+//  Created by Kyrie Kopczynski on 2/16/16.
 //  Copyright © 2016 KyrieKopczynski. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,15 +14,15 @@ import CoreData
 
 extension CNBook {
 
-  @NSManaged var title: String
-  @NSManaged var author: CNAuthor?
-  @NSManaged var publishDate: NSDate?
+    @NSManaged var finishedReading: NSNumber?
+    @NSManaged var publishDate: NSDate?
+    @NSManaged var readOrder: NSNumber?
+    @NSManaged var title: String?
+    @NSManaged var yearRangeMin: NSNumber?
+    @NSManaged var yearRangeMax: NSNumber?
+    @NSManaged var yearRangeIsEstimate: NSNumber?
+    @NSManaged var author: CNAuthor?
+    @NSManaged var characters: NSSet?
+    @NSManaged var lists: NSSet?
 
-  @NSManaged var characters: NSSet?
-  @NSManaged var settingStartDate: NSDate?
-  @NSManaged var settingEndDate: NSDate?
-
-  @NSManaged var readOrder: NSNumber?
-  @NSManaged var finishedReading: NSNumber?
-  @NSManaged var lists: NSSet?
 }

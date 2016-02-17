@@ -1,5 +1,5 @@
 //
-//  CNAuthor+CoreDataProperties.swift
+//  CNLocation+CoreDataProperties.swift
 //  CharacterNotes
 //
 //  Created by Kyrie Kopczynski on 2/16/16.
@@ -12,12 +12,11 @@
 import Foundation
 import CoreData
 
-extension CNAuthor {
+extension CNLocation {
 
-    @NSManaged var dateRangeMin: NSDate?
-    @NSManaged var firstName: String?
-    @NSManaged var lastName: String?
-    @NSManaged var dateRangeMax: NSDate?
-    @NSManaged var books: NSSet?
+    @NSManaged var latitude: NSDecimalNumber?
+    @NSManaged var longitude: NSDecimalNumber?
+    @NSManaged var name: String?
+    @NSManaged var regionScale: NSNumber?
 
 }

@@ -13,7 +13,7 @@ import CoreData
 class CNBook: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
-
+  
   convenience init(order: Int, context: NSManagedObjectContext) {
     self.init(entity: CNBook.entityDesc(context)!,
       insertIntoManagedObjectContext: context)
