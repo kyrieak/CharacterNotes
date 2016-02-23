@@ -1,5 +1,5 @@
 //
-//  CNAuthor+CoreDataProperties.swift
+//  CNProfile+CoreDataProperties.swift
 //  CharacterNotes
 //
 //  Created by Kyrie Kopczynski on 2/17/16.
@@ -12,8 +12,13 @@
 import Foundation
 import CoreData
 
-extension CNAuthor {
+extension CNProfile {
 
-    @NSManaged var books: NSSet?
+    @NSManaged var firstName: String?
+    @NSManaged var middleName: String?
+    @NSManaged var lastName: String?
+    @NSManaged var yearRangeMin: NSNumber?
+    @NSManaged var yearRangeMax: NSNumber?
+    @NSManaged var yearRangeIsEstimate: NSNumber?
 
 }

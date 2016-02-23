@@ -28,6 +28,9 @@
 		346C8BA91C5FFC9900FFB8EB /* CNCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346C8B9B1C5FFC9900FFB8EB /* CNCharacter.swift */; };
 		346C8BAA1C5FFC9900FFB8EB /* CNQuotation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346C8B9C1C5FFC9900FFB8EB /* CNQuotation+CoreDataProperties.swift */; };
 		346C8BAB1C5FFC9900FFB8EB /* CNQuotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346C8B9D1C5FFC9900FFB8EB /* CNQuotation.swift */; };
+		34777F641C76AD4000D6217B /* LinkOpeningVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34777F631C76AD4000D6217B /* LinkOpeningVC.swift */; };
+		347D11191C752B1E00E35289 /* CNProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347D11171C752B1E00E35289 /* CNProfile+CoreDataProperties.swift */; };
+		347D111A1C752B1E00E35289 /* CNProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347D11181C752B1E00E35289 /* CNProfile.swift */; };
 		348649C01C6BD25400E786DD /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348649BF1C6BD25400E786DD /* CharacterViewController.swift */; };
 		348ACD791C4CDE0F001659A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348ACD781C4CDE0F001659A5 /* AppDelegate.swift */; };
 		348ACD7B1C4CDE0F001659A5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348ACD7A1C4CDE0F001659A5 /* MasterViewController.swift */; };
@@ -87,6 +90,9 @@
 		346C8B9B1C5FFC9900FFB8EB /* CNCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNCharacter.swift; sourceTree = "<group>"; };
 		346C8B9C1C5FFC9900FFB8EB /* CNQuotation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CNQuotation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		346C8B9D1C5FFC9900FFB8EB /* CNQuotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNQuotation.swift; sourceTree = "<group>"; };
+		34777F631C76AD4000D6217B /* LinkOpeningVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkOpeningVC.swift; sourceTree = "<group>"; };
+		347D11171C752B1E00E35289 /* CNProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CNProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		347D11181C752B1E00E35289 /* CNProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNProfile.swift; sourceTree = "<group>"; };
 		348649BF1C6BD25400E786DD /* CharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		348ACD751C4CDE0F001659A5 /* CharacterNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		348ACD781C4CDE0F001659A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +216,8 @@
 		348ACDBE1C4CE4B0001659A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				347D11171C752B1E00E35289 /* CNProfile+CoreDataProperties.swift */,
+				347D11181C752B1E00E35289 /* CNProfile.swift */,
 				349AE7311C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift */,
 				349AE7321C740AD700D4BCD2 /* CNLocation.swift */,
 				346C8B901C5FFC9900FFB8EB /* CNList+CoreDataProperties.swift */,
@@ -236,6 +244,7 @@
 				34943C621C56DC77008717C8 /* NavController.swift */,
 				341956501C51714200F1810B /* BookListViewController.swift */,
 				346ACA0A1C5315420063F071 /* BooksViewController.swift */,
+				34777F631C76AD4000D6217B /* LinkOpeningVC.swift */,
 				348ACD7A1C4CDE0F001659A5 /* MasterViewController.swift */,
 				348ACD7C1C4CDE0F001659A5 /* DetailViewController.swift */,
 				3410BAC61C71B480000A3957 /* SummaryViewController.swift */,
@@ -321,6 +330,7 @@
 				TargetAttributes = {
 					348ACD741C4CDE0F001659A5 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 28NY6R2W6Z;
 					};
 					348ACD8A1C4CDE0F001659A5 = {
 						CreatedOnToolsVersion = 7.1;
@@ -392,6 +402,8 @@
 				346C8BA21C5FFC9900FFB8EB /* CNBook+CoreDataProperties.swift in Sources */,
 				34D466341C520FEC00432C97 /* BookFetchController.swift in Sources */,
 				346C8BA01C5FFC9900FFB8EB /* CNHeading+CoreDataProperties.swift in Sources */,
+				34777F641C76AD4000D6217B /* LinkOpeningVC.swift in Sources */,
+				347D111A1C752B1E00E35289 /* CNProfile.swift in Sources */,
 				346C8B9F1C5FFC9900FFB8EB /* CNList.swift in Sources */,
 				348ACD7D1C4CDE0F001659A5 /* DetailViewController.swift in Sources */,
 				345AA2131C55F46300B8E878 /* BooksTableDataSource.swift in Sources */,
@@ -414,6 +426,7 @@
 				349AE7341C740AD700D4BCD2 /* CNLocation.swift in Sources */,
 				345997E41C4E04C30025D178 /* ListsTableDataSource.swift in Sources */,
 				346C8BA41C5FFC9900FFB8EB /* CNGroup+CoreDataProperties.swift in Sources */,
+				347D11191C752B1E00E35289 /* CNProfile+CoreDataProperties.swift in Sources */,
 				341956511C51714200F1810B /* BookListViewController.swift in Sources */,
 				34AA39E81C607781006536AB /* Logger.swift in Sources */,
 				346C8BA61C5FFC9900FFB8EB /* CNAuthor+CoreDataProperties.swift in Sources */,
@@ -559,6 +572,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CharacterNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kakop.CharacterNotes;
@@ -570,6 +584,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CharacterNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kakop.CharacterNotes;

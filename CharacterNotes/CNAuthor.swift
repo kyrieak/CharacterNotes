@@ -10,20 +10,12 @@ import Foundation
 import CoreData
 
 
-class CNAuthor: NSManagedObject {
+class CNAuthor: CNProfile {
 
 // Insert code here to add functionality to your managed object subclass
 
   var name: String {
-    if ((firstName ?? lastName) == nil) {
-      return ""
-    } else if (lastName == nil) {
-      return firstName!
-    } else if (firstName == nil) {
-      return lastName!
-    } else {
-      return "\(firstName!) \(lastName!)"
-    }
+    return getFullName()
   }
   
   convenience init(firstName: String?, lastName: String, context: NSManagedObjectContext) {

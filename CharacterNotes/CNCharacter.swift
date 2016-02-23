@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class CNCharacter: NSManagedObject {
+class CNCharacter: CNProfile {
   
   // - MARK: - private
   
@@ -39,26 +39,6 @@ class CNCharacter: NSManagedObject {
   }
 
   // - MARK: - Instance
-
-  func allNames() -> [String] {
-    var names: [String] = []
-    
-    if (firstName != nil) {
-      names.append(firstName!)
-    }
-    if (middleName != nil) {
-      names.append(middleName!)
-    }
-    if (lastName != nil) {
-      names.append(lastName!)
-    }
-    
-    return names
-  }
-  
-  func getFullName() -> String {
-    return allNames().joinWithSeparator(" ")
-  }
   
   func getAgeRange() -> YearRange {
     return YearRange(min: ageRangeMin?.integerValue, max: ageRangeMax?.integerValue, isEstimate: (ageRangeIsEstimate?.boolValue ?? true))
