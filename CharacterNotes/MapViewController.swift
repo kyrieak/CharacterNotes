@@ -11,103 +11,150 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, UIPickerViewDelegate {
+  // MARK: - Properties -
+  
+  
+  // MARK: Objects
   
   @IBOutlet var pickerDataSource: ContinentsPickerDataSource!
+  private(set) var searchController: UISearchController?
   
-  var mapView: MKMapView?
-  var pickerView: UIPickerView?
+  // MARK: Subviews
   
+  private var navBar: UINavigationBar?
+  private var mapView: MKMapView?
+  private var pickerView: UIPickerView?
+  private var goBtn: UIButton?
   
+  // MARK: State
   
+  private var setupDone = false
   private var continentSelection: ContinentInfo?
-  var searchController: UISearchController?
+  
+
+  /* -------------------------------------------------------------- */
+  
+  // MARK: - Initializer -
+
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     
-    searchController = UISearchController(searchResultsController: self)
+    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("searchResultsTableVC")
+    
+    searchController = UISearchController(searchResultsController: vc)
+  }
+
+  
+  /* -------------------------------------------------------------- */
+  
+  // MARK: - Controller -
+  
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    navBar = navigationController!.navigationBar
+
+    setupSearchBar()
   }
   
   
   override func viewDidLayoutSubviews() {
-    view.addSubview((searchController?.searchBar)!)
-    mapView = view.viewWithTag(2) as? MKMapView
-    pickerView = view.viewWithTag(4) as? UIPickerView
-    
-    mapView?.centerCoordinate = CLLocationCoordinate2D(direction: .NW, latitude: 54.5970, longitude: -5.9300)
-    
-    let poi = PointOfInterest(title: "Belfast, Ireland", coordinates: mapView!.centerCoordinate)
-
-    poi.subtitle = "C.S. Lewis Birthplace"
-    mapView?.addAnnotation(poi)
-  }
-  
-  @IBAction func toggleContinentsPicker(sender: UIButton) {
-    if ((continentSelection != nil) && (sender.tag == 31)) {
-      mapView?.centerCoordinate = continentSelection!.coordinate
-      continentSelection = nil
+    if (!setupDone) {
+      setupSubviewRefs()
+      setupMap()
+      setupPicker()
+      
+      setupDone = true
     }
-    
-    pickerView!.hidden = !pickerView!.hidden
-    view.viewWithTag(31)?.hidden = pickerView!.hidden    
   }
   
-  // MARK: - Picker Delegate -
+  /* -------------------------------------------------------------- */
 
+  // MARK: - Picker Delegate -
+  
+  
   func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     return pickerDataSource.continentForRow(row).name
   }
   
-  func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    continentSelection = ContinentInfo.worldContinents[row]
-  }
-}
-
-class PointOfInterest: NSObject, MKAnnotation {
-  var coordinate: CLLocationCoordinate2D
-  var title: String?
-  var subtitle: String?
   
-  init(title: String, coordinates: CLLocationCoordinate2D) {
-    self.title = title
-    self.coordinate = coordinates
+  func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    continentSelection = pickerDataSource.continentForRow(row)
   }
-}
 
-extension CLLocationCoordinate2D {
-  init(direction: Compass, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-    if (CLLocationCoordinate2D.latitudeSignIsCorrect(direction, latitude: latitude)) {
-      self.latitude = latitude
-    } else {
-      self.latitude = (latitude * -1.00)
+  
+  /* -------------------------------------------------------------- */
+
+  // MARK: - IBAction -
+  
+  
+  @IBAction func toggleContinentsPicker(sender: UIButton) {
+    if ((continentSelection != nil) && (sender.tag == goBtn?.tag)) {
+      setMapCenter(continentSelection!.coordinate)
+      continentSelection = nil
     }
     
-    if (CLLocationCoordinate2D.longitudeSignIsCorrect(direction, longitude: longitude)) {
-      self.longitude = longitude
-    } else {
-      self.longitude = (longitude * -1.00)
-    }
+    pickerView!.hidden = !pickerView!.hidden
+    goBtn?.hidden = pickerView!.hidden
   }
   
-  static func latitudeSignIsCorrect(direction: Compass, latitude: CLLocationDegrees) -> Bool {
-    switch(direction) {
-      case .NE, .NW:
-        return (latitude >= 0.00)
-      default:
-        return (latitude < 0.00)
-    }
+  
+  /* -------------------------------------------------------------- */
+  
+  // MARK: - private -
+  
+  
+  private func setupSearchBar() {
+    searchController!.searchBar.frame.origin = CGPoint(x: navBar!.frame.minX, y: navBar!.frame.maxY)
+    searchController!.view.frame.origin.y = navBar!.frame.maxY + 44
+    navigationController!.view.addSubview((searchController?.searchBar)!)
+    
+//    view.addSubview(searchController!.searchBar)
+//
+    searchController?.dimsBackgroundDuringPresentation = false
+    searchController?.hidesNavigationBarDuringPresentation = false
+    searchController?.definesPresentationContext = true
+
+//    searchController!.searchBar.frame.origin = origin
+//    var navItem = UINavigationItem()
+//    navItem.titleView = searchController!.searchBar
+//    navigationController!.navigationBar.setItems([navItem], animated: false)
+//    view.addSubview(searchController!.searchBar)
+  }
+  
+  
+  private func setupSubviewRefs() {
+    mapView    = view.viewWithTag(2) as? MKMapView
+    pickerView = view.viewWithTag(4) as? UIPickerView
+    goBtn      = view.viewWithTag(31) as? UIButton
+  }
+  
+  
+  private func setupMap() {
+    setMapCenter(CLLocationCoordinate2D(latitude: Latitude(deg: 54.5970, dir: .N),
+      longitude: Longitude(deg: -5.9300, dir: .W)))
+    setMapPOI()
   }
 
-  static func longitudeSignIsCorrect(direction: Compass, longitude: CLLocationDegrees) -> Bool {
-    switch(direction) {
-      case .NE, .SE:
-        return (longitude >= 0.00)
-      default:
-        return (longitude < 0.00)
-    }
+  
+  private func setMapCenter(coordinate: CLLocationCoordinate2D) {
+    mapView?.centerCoordinate = CLLocationCoordinate2D(latitude: Latitude(deg: 54.5970, dir: .N),
+      longitude: Longitude(deg: -5.9300, dir: .W))
+  }
+  
+  private func setMapPOI() {
+    let poi = PointOfInterest(title: "Belfast, Ireland", coordinates: mapView!.centerCoordinate)
+    
+    poi.subtitle = "C.S. Lewis Birthplace"
+    mapView?.addAnnotation(poi)
+  }
+  
+  
+  private func setupPicker() {
+    pickerView?.selectRow(0, inComponent: 0, animated: false)
+    continentSelection = pickerDataSource.continentForRow(0)
   }
 }
 
-enum Compass {
-  case NE, NW, SE, SW
-}

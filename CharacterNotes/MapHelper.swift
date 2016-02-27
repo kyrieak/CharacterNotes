@@ -61,3 +61,105 @@ enum RegionScale: Int {
   case City      = 2
   case Other     = 3
 }
+
+
+class PointOfInterest: NSObject, MKAnnotation {
+  var coordinate: CLLocationCoordinate2D
+  var title: String?
+  var subtitle: String?
+  
+  init(title: String, coordinates: CLLocationCoordinate2D) {
+    self.title = title
+    self.coordinate = coordinates
+  }
+}
+
+extension CLLocationCoordinate2D {
+//  init(direction: Compass, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+//    self.latitude = Latitude.signedDegrees(<#T##degrees: Double##Double#>, dir: <#T##LatitudeDir#>)
+//    if (CLLocationCoordinate2D.latitudeSignIsCorrect(direction, latitude: latitude)) {
+//      self.latitude = latitude
+//    } else {
+//      self.latitude = (latitude * -1.00)
+//    }
+//    
+//    if (CLLocationCoordinate2D.longitudeSignIsCorrect(direction, longitude: longitude)) {
+//      self.longitude = longitude
+//    } else {
+//      self.longitude = (longitude * -1.00)
+//    }
+//  }
+//  
+  init(latitude: Latitude, longitude: Longitude) {
+    self.latitude = latitude.degrees
+    self.longitude = longitude.degrees
+  }
+//  
+//  static func latitudeSignIsCorrect(direction: Compass, latitude: CLLocationDegrees) -> Bool {
+//    switch(direction) {
+//    case .NE, .NW:
+//      return (latitude >= 0.00)
+//    default:
+//      return (latitude < 0.00)
+//    }
+//  }
+//  
+//  static func longitudeSignIsCorrect(direction: Compass, longitude: CLLocationDegrees) -> Bool {
+//    switch(direction) {
+//    case .NE, .SE:
+//      return (longitude >= 0.00)
+//    default:
+//      return (longitude < 0.00)
+//    }
+//  }
+}
+
+enum Compass {
+  case NE, NW, SE, SW
+}
+
+enum LatitudeDir {
+  case N, S
+}
+
+enum LongitudeDir {
+  case E, W
+}
+
+struct Latitude {
+  private var degrees: CLLocationDegrees
+  private var direction: LatitudeDir
+  
+  init(deg: CLLocationDegrees, dir: LatitudeDir) {
+    self.degrees   = Latitude.signedDegrees(deg, dir: dir)
+    self.direction = dir
+  }
+  
+  static func signedDegrees(degrees: Double, dir: LatitudeDir) -> CLLocationDegrees {
+    switch(dir) {
+      case .N:
+        return ((degrees < 0.00) ? abs(degrees) : degrees)
+      case .S:
+        return ((degrees > 0.00) ? (degrees * -1.00) : degrees)
+    }
+  }
+}
+
+struct Longitude {
+  private var degrees: CLLocationDegrees
+  private var direction: LongitudeDir
+  
+  init(deg: CLLocationDegrees, dir: LongitudeDir) {
+    self.degrees   = Longitude.signedDegrees(deg, dir: dir)
+    self.direction = dir
+  }
+
+  static func signedDegrees(degrees: Double, dir: LongitudeDir) -> CLLocationDegrees {
+    switch(dir) {
+      case .E:
+        return ((degrees < 0.00) ? abs(degrees) : degrees)
+      case .W:
+        return ((degrees > 0.00) ? (degrees * -1.00) : degrees)
+    }
+  }
+}
