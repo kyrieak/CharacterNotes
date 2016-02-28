@@ -9,57 +9,46 @@
 import Foundation
 import MapKit
 
-struct ContinentInfo {
-  let name: String
-  let coordinate: CLLocationCoordinate2D
-  
-  init(continent: Continent) {
-    switch(continent) {
-      case .Africa:
-        name = "Africa"
-        coordinate = CLLocationCoordinate2D(latitude: 7.19, longitude: 21.09)
-      case .Antarctica:
-        name = "Antarctica"
-        coordinate = CLLocationCoordinate2D(latitude: -90.00, longitude: 0.00)
-      case .Asia:
-        name = "Asia"
-        coordinate = CLLocationCoordinate2D(latitude: 46.28, longitude: 86.67)
-      case .Australia:
-        name = "Australia"
-        coordinate = CLLocationCoordinate2D(latitude: -35.31, longitude: 149.12)
-      case .Europe:
-        name = "Europe"
-        coordinate = CLLocationCoordinate2D(latitude: 54.90, longitude: 25.32)
-      case .NorthAmerica:
-        name = "North America"
-        coordinate = CLLocationCoordinate2D(latitude: 48.17, longitude: -100.17)
-      case .SouthAmerica:
-        name = "South America"
-        coordinate = CLLocationCoordinate2D(latitude: -13.00, longitude: -59.40)
-    }
+extension MKCoordinateRegion {
+  static func forContinent(continent: Continent) -> MKCoordinateRegion {
+    return MKCoordinateRegion(center: CLLocationCoordinate2D.centerPointFor(continent),
+                                span: MKCoordinateSpan.forContinent(continent))
+  }
+}
+
+
+extension MKCoordinateSpan {
+  static func forContinent(continent: Continent) -> MKCoordinateSpan {
+    let latitRange = Latitude.rangeFor(continent)
+    let longitRange = Longitude.rangeFor(continent)
+    
+    let latitDelta = abs((latitRange.min.degrees - latitRange.max.degrees) / 2.00)
+    let longitDelta = abs((longitRange.min.degrees - longitRange.max.degrees) / 2.00)
+
+    return MKCoordinateSpan(latitudeDelta: latitDelta, longitudeDelta: longitDelta)
+  }
+}
+
+extension CLLocationCoordinate2D {
+  init(latitude: Latitude, longitude: Longitude) {
+    self.latitude = latitude.degrees
+    self.longitude = longitude.degrees
   }
   
-  static var Africa       = ContinentInfo(continent: .Africa)
-  static var Antarctica   = ContinentInfo(continent: .Antarctica)
-  static var Asia         = ContinentInfo(continent: .Asia)
-  static var Australia    = ContinentInfo(continent: .Australia)
-  static var Europe       = ContinentInfo(continent: .Europe)
-  static var NorthAmerica = ContinentInfo(continent: .NorthAmerica)
-  static var SouthAmerica = ContinentInfo(continent: .SouthAmerica)
-  
-  static var worldContinents: [ContinentInfo] = [.Africa, .Antarctica, .Asia, .Australia, .Europe, .NorthAmerica, .SouthAmerica]
+  static func centerPointFor(continent: Continent) -> CLLocationCoordinate2D {
+    let latitudeRange = Latitude.rangeFor(continent)
+    let longitudeRange = Longitude.rangeFor(continent)
+    
+    let avgLatitude = ((latitudeRange.min.degrees + latitudeRange.max.degrees) / 2.00)
+    let avgLongitude = ((longitudeRange.min.degrees + longitudeRange.max.degrees) / 2.00)
+    
+    return CLLocationCoordinate2D(latitude: avgLatitude, longitude: avgLongitude)
+  }
 }
 
 
 enum Continent {
   case Africa, Antarctica, Asia, Australia, Europe, NorthAmerica, SouthAmerica
-}
-
-enum RegionScale: Int {
-  case Continent = 0
-  case Country   = 1
-  case City      = 2
-  case Other     = 3
 }
 
 
@@ -72,50 +61,6 @@ class PointOfInterest: NSObject, MKAnnotation {
     self.title = title
     self.coordinate = coordinates
   }
-}
-
-extension CLLocationCoordinate2D {
-//  init(direction: Compass, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-//    self.latitude = Latitude.signedDegrees(<#T##degrees: Double##Double#>, dir: <#T##LatitudeDir#>)
-//    if (CLLocationCoordinate2D.latitudeSignIsCorrect(direction, latitude: latitude)) {
-//      self.latitude = latitude
-//    } else {
-//      self.latitude = (latitude * -1.00)
-//    }
-//    
-//    if (CLLocationCoordinate2D.longitudeSignIsCorrect(direction, longitude: longitude)) {
-//      self.longitude = longitude
-//    } else {
-//      self.longitude = (longitude * -1.00)
-//    }
-//  }
-//  
-  init(latitude: Latitude, longitude: Longitude) {
-    self.latitude = latitude.degrees
-    self.longitude = longitude.degrees
-  }
-//  
-//  static func latitudeSignIsCorrect(direction: Compass, latitude: CLLocationDegrees) -> Bool {
-//    switch(direction) {
-//    case .NE, .NW:
-//      return (latitude >= 0.00)
-//    default:
-//      return (latitude < 0.00)
-//    }
-//  }
-//  
-//  static func longitudeSignIsCorrect(direction: Compass, longitude: CLLocationDegrees) -> Bool {
-//    switch(direction) {
-//    case .NE, .SE:
-//      return (longitude >= 0.00)
-//    default:
-//      return (longitude < 0.00)
-//    }
-//  }
-}
-
-enum Compass {
-  case NE, NW, SE, SW
 }
 
 enum LatitudeDir {
@@ -143,6 +88,32 @@ struct Latitude {
         return ((degrees > 0.00) ? (degrees * -1.00) : degrees)
     }
   }
+  
+  static func rangeFor(continent: Continent) -> (min: Latitude, max: Latitude) {
+    switch(continent) {
+      case .Africa:
+        return (min: Latitude(deg: 38.00, dir: .N), max: Latitude(deg: -35.00, dir: .S))
+      case .Antarctica:
+        return (min: Latitude(deg: -60.00, dir: .S), max: Latitude(deg: -90.00, dir: .S))
+      case .Asia:
+        return (min: Latitude(deg: 82.00, dir: .N), max: Latitude(deg: -11.00, dir: .S))
+      case .Australia:
+        return (min: Latitude(deg: -9.00, dir: .S), max: Latitude(deg: -44.00, dir: .S))
+      case .Europe:
+        return (min: Latitude(deg: 82.00, dir: .N), max: Latitude(deg: 27.00, dir: .N))
+      case .NorthAmerica:
+        return (min: Latitude(deg: 84.00, dir: .N), max: Latitude(deg: 5.00, dir: .N))
+      case .SouthAmerica:
+        return (min: Latitude(deg: 14.00, dir: .N), max: Latitude(deg: -60.00, dir: .S))
+    }
+  }
+  
+  static func getAvg(l1: Latitude, l2: Latitude) -> Latitude {
+    let avgDeg = ((l1.degrees + l2.degrees) / 2.00)
+    let avgDir: LatitudeDir = ((avgDeg > 0) ? .N : .S)
+    
+    return Latitude(deg: avgDeg, dir: avgDir)
+  }
 }
 
 struct Longitude {
@@ -160,6 +131,25 @@ struct Longitude {
         return ((degrees < 0.00) ? abs(degrees) : degrees)
       case .W:
         return ((degrees > 0.00) ? (degrees * -1.00) : degrees)
+    }
+  }
+  
+  static func rangeFor(continent: Continent) -> (min: Longitude, max: Longitude) {
+    switch(continent) {
+      case .Africa:
+        return (min: Longitude(deg: 64.00, dir: .E), max: Longitude(deg: -26.00, dir: .W))
+      case .Antarctica:
+        return (min: Longitude(deg: 180.00, dir: .E), max: Longitude(deg: -180.00, dir: .W))
+      case .Asia:
+        return (min: Longitude(deg: -170.00, dir: .W), max: Longitude(deg: 27.00, dir: .E))
+      case .Australia:
+        return (min: Longitude(deg: 168.00, dir: .E), max: Longitude(deg: 72.00, dir: .E))
+      case .Europe:
+        return (min: Longitude(deg: 70.00, dir: .E), max: Longitude(deg: -32.00, dir: .W))
+      case .NorthAmerica:
+        return (min: Longitude(deg: -11.00, dir: .W), max: Longitude(deg: -53.00, dir: .W))
+      case .SouthAmerica:
+        return (min: Longitude(deg: -26.00, dir: .W), max: Longitude(deg: -110.00, dir: .W))
     }
   }
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, UIPickerViewDelegate {
+class MapViewController: UIViewController, UIPickerViewDelegate, MKMapViewDelegate {
   // MARK: - Properties -
   
   
@@ -86,6 +86,14 @@ class MapViewController: UIViewController, UIPickerViewDelegate {
 
   
   /* -------------------------------------------------------------- */
+  
+  // MARK: - MapView Delegate -
+
+  func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+    mapView.region = nil
+  }
+  
+  /* -------------------------------------------------------------- */
 
   // MARK: - IBAction -
   
@@ -115,7 +123,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate {
 //
     searchController?.dimsBackgroundDuringPresentation = false
     searchController?.hidesNavigationBarDuringPresentation = false
-    searchController?.definesPresentationContext = true
+//    searchController?.definesPresentationContext = true
 
 //    searchController!.searchBar.frame.origin = origin
 //    var navItem = UINavigationItem()

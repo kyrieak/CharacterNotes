@@ -616,7 +616,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebE-in-Z0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="637.5" y="423.75"/>
+            <point key="canvasLocation" x="2761.5" y="500.25"/>
         </scene>
         <!--MapViewController-->
         <scene sceneID="qWu-Qf-Fst">
@@ -630,9 +630,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erc-KY-AMp">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGd-pM-eE8">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            </mapView>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="44" width="400" height="595"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="Fm1-cL-q50" kind="embed" id="puj-Eq-qsf"/>
+                                </connections>
+                            </containerView>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJE-rJ-ZV5">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.85559971117080114" green="0.85758856225315905" blue="0.88793816137566139" alpha="1" colorSpace="calibratedRGB"/>
@@ -710,66 +716,60 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lGd-pM-eE8" firstAttribute="top" secondItem="6E6-dH-p6d" secondAttribute="bottom" constant="44" id="3Er-eD-lVR"/>
                             <constraint firstItem="cJE-rJ-ZV5" firstAttribute="centerX" secondItem="AfJ-ND-D2y" secondAttribute="centerX" id="3hD-vW-eU0"/>
-                            <constraint firstItem="erc-KY-AMp" firstAttribute="centerX" secondItem="AfJ-ND-D2y" secondAttribute="centerX" id="6U0-3J-QTo"/>
                             <constraint firstItem="cJE-rJ-ZV5" firstAttribute="top" secondItem="nR2-zm-8Il" secondAttribute="bottom" id="83f-du-3eS">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="cDx-e9-8yN" firstAttribute="leading" secondItem="cJE-rJ-ZV5" secondAttribute="trailing" constant="-42" id="Cme-8s-cfz"/>
-                            <constraint firstItem="cJE-rJ-ZV5" firstAttribute="top" secondItem="erc-KY-AMp" secondAttribute="bottom" id="Pht-nH-sA0"/>
+                            <constraint firstItem="cJE-rJ-ZV5" firstAttribute="top" secondItem="lGd-pM-eE8" secondAttribute="bottom" id="G2l-Az-MZD"/>
                             <constraint firstItem="cJE-rJ-ZV5" firstAttribute="width" secondItem="AfJ-ND-D2y" secondAttribute="width" id="R3A-vA-s0T"/>
                             <constraint firstItem="cDx-e9-8yN" firstAttribute="centerY" secondItem="cJE-rJ-ZV5" secondAttribute="centerY" id="TNZ-f0-gpO"/>
-                            <constraint firstItem="erc-KY-AMp" firstAttribute="top" secondItem="6E6-dH-p6d" secondAttribute="bottom" constant="44" id="Uax-zw-sTw"/>
                             <constraint firstItem="FWb-9t-Pu6" firstAttribute="top" secondItem="cJE-rJ-ZV5" secondAttribute="bottom" id="WSy-Bp-MJy"/>
                             <constraint firstItem="nR2-zm-8Il" firstAttribute="width" secondItem="cJE-rJ-ZV5" secondAttribute="width" id="fZ0-02-Zfq"/>
-                            <constraint firstItem="erc-KY-AMp" firstAttribute="width" secondItem="AfJ-ND-D2y" secondAttribute="width" id="gNv-5W-QhS"/>
                             <constraint firstItem="nR2-zm-8Il" firstAttribute="leading" secondItem="cJE-rJ-ZV5" secondAttribute="leading" id="vlq-Nr-Ocg"/>
                             <constraint firstItem="cDx-e9-8yN" firstAttribute="top" secondItem="cJE-rJ-ZV5" secondAttribute="bottom" constant="-42" id="zTA-lC-16c"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="erc-KY-AMp"/>
+                                <exclude reference="lGd-pM-eE8"/>
                                 <exclude reference="cJE-rJ-ZV5"/>
                                 <exclude reference="nR2-zm-8Il"/>
                                 <exclude reference="cDx-e9-8yN"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="WSy-Bp-MJy"/>
+                                <exclude reference="3Er-eD-lVR"/>
                                 <exclude reference="fZ0-02-Zfq"/>
                                 <exclude reference="vlq-Nr-Ocg"/>
+                                <exclude reference="3hD-vW-eU0"/>
+                                <exclude reference="83f-du-3eS"/>
+                                <exclude reference="G2l-Az-MZD"/>
+                                <exclude reference="R3A-vA-s0T"/>
+                                <exclude reference="WSy-Bp-MJy"/>
                                 <exclude reference="Cme-8s-cfz"/>
                                 <exclude reference="TNZ-f0-gpO"/>
                                 <exclude reference="zTA-lC-16c"/>
-                                <exclude reference="3hD-vW-eU0"/>
-                                <exclude reference="83f-du-3eS"/>
-                                <exclude reference="Pht-nH-sA0"/>
-                                <exclude reference="R3A-vA-s0T"/>
-                                <exclude reference="6U0-3J-QTo"/>
-                                <exclude reference="Uax-zw-sTw"/>
-                                <exclude reference="gNv-5W-QhS"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="erc-KY-AMp"/>
+                                <include reference="lGd-pM-eE8"/>
                                 <include reference="cJE-rJ-ZV5"/>
                                 <include reference="nR2-zm-8Il"/>
                                 <include reference="cDx-e9-8yN"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="WSy-Bp-MJy"/>
+                                <include reference="3Er-eD-lVR"/>
                                 <include reference="fZ0-02-Zfq"/>
                                 <include reference="vlq-Nr-Ocg"/>
+                                <include reference="3hD-vW-eU0"/>
+                                <include reference="83f-du-3eS"/>
+                                <include reference="G2l-Az-MZD"/>
+                                <include reference="R3A-vA-s0T"/>
+                                <include reference="WSy-Bp-MJy"/>
                                 <include reference="Cme-8s-cfz"/>
                                 <include reference="TNZ-f0-gpO"/>
                                 <include reference="zTA-lC-16c"/>
-                                <include reference="3hD-vW-eU0"/>
-                                <include reference="83f-du-3eS"/>
-                                <include reference="Pht-nH-sA0"/>
-                                <include reference="R3A-vA-s0T"/>
-                                <include reference="6U0-3J-QTo"/>
-                                <include reference="Uax-zw-sTw"/>
-                                <include reference="gNv-5W-QhS"/>
                             </mask>
                         </variation>
                     </view>
@@ -1603,6 +1603,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36R-gI-pWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1696.5" y="230.25"/>
+        </scene>
+        <!--MapContainerVC-->
+        <scene sceneID="64O-3Z-Obt">
+            <objects>
+                <viewController title="MapContainerVC" definesPresentationContext="YES" id="Fm1-cL-q50" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DfD-O3-jTJ">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ugj-jT-vRl">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ugj-jT-vRl" firstAttribute="width" secondItem="DfD-O3-jTJ" secondAttribute="width" id="HcT-0L-zgS"/>
+                            <constraint firstItem="ugj-jT-vRl" firstAttribute="height" secondItem="DfD-O3-jTJ" secondAttribute="height" id="gF4-DX-BpZ"/>
+                            <constraint firstItem="ugj-jT-vRl" firstAttribute="centerY" secondItem="DfD-O3-jTJ" secondAttribute="centerY" id="hsX-6O-7kM"/>
+                            <constraint firstItem="ugj-jT-vRl" firstAttribute="centerX" secondItem="DfD-O3-jTJ" secondAttribute="centerX" id="tmW-59-LES"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ugj-jT-vRl"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="HcT-0L-zgS"/>
+                                <exclude reference="gF4-DX-BpZ"/>
+                                <exclude reference="hsX-6O-7kM"/>
+                                <exclude reference="tmW-59-LES"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ugj-jT-vRl"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="HcT-0L-zgS"/>
+                                <include reference="gF4-DX-BpZ"/>
+                                <include reference="hsX-6O-7kM"/>
+                                <include reference="tmW-59-LES"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xlf-A5-Awd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="vxO-8M-EJn" customClass="UISearchController"/>
+            </objects>
+            <point key="canvasLocation" x="2076" y="423.375"/>
         </scene>
     </scenes>
     <resources>
