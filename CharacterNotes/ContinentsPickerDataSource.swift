@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ContinentsPickerDataSource: NSObject, UIPickerViewDataSource {
-  let worldContinents = ContinentInfo.worldContinents
+  let worldContinents = Continent.all
 
   func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
     return 1
@@ -20,7 +20,7 @@ class ContinentsPickerDataSource: NSObject, UIPickerViewDataSource {
     return worldContinents.count
   }
   
-  func continentForRow(row: Int) -> ContinentInfo {
+  func continentForRow(row: Int) -> Continent {
     return worldContinents[row]
   }
 }

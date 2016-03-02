@@ -29,7 +29,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, MKMapViewDelega
   // MARK: State
   
   private var setupDone = false
-  private var continentSelection: ContinentInfo?
+  private var continentSelection: Continent?
   
 
   /* -------------------------------------------------------------- */
@@ -76,7 +76,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, MKMapViewDelega
   
   
   func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return pickerDataSource.continentForRow(row).name
+    return pickerDataSource.continentForRow(row).rawValue
   }
   
   
@@ -87,12 +87,12 @@ class MapViewController: UIViewController, UIPickerViewDelegate, MKMapViewDelega
   
   /* -------------------------------------------------------------- */
   
-  // MARK: - MapView Delegate -
-
-  func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-    mapView.region = nil
-  }
-  
+//  // MARK: - MapView Delegate -
+//
+//  func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+//    mapView.region = nil
+//  }
+//  
   /* -------------------------------------------------------------- */
 
   // MARK: - IBAction -
@@ -100,7 +100,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, MKMapViewDelega
   
   @IBAction func toggleContinentsPicker(sender: UIButton) {
     if ((continentSelection != nil) && (sender.tag == goBtn?.tag)) {
-      setMapCenter(continentSelection!.coordinate)
+      mapView?.setRegion(MKCoordinateRegion.forContinent(continentSelection!), animated: false)
       continentSelection = nil
     }
     
@@ -143,6 +143,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, MKMapViewDelega
   private func setupMap() {
     setMapCenter(CLLocationCoordinate2D(latitude: Latitude(deg: 54.5970, dir: .N),
       longitude: Longitude(deg: -5.9300, dir: .W)))
+    Log.withSpace("\(mapView?.centerCoordinate)")
     setMapPOI()
   }
 
@@ -153,7 +154,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, MKMapViewDelega
   }
   
   private func setMapPOI() {
-    let poi = PointOfInterest(title: "Belfast, Ireland", coordinates: mapView!.centerCoordinate)
+    let poi = MKPointAnnotation(title: "Belfast, Ireland", coordinates: mapView!.centerCoordinate)
     
     poi.subtitle = "C.S. Lewis Birthplace"
     mapView?.addAnnotation(poi)
