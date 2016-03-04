@@ -63,7 +63,8 @@
                                         <exclude reference="XvA-De-mnx"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="28" width="400" height="150"/>
                                     <mask key="constraints">
                                         <include reference="XvA-De-mnx"/>
                                     </mask>
@@ -84,7 +85,8 @@
                                         <exclude reference="9zc-Ia-85H"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="28" width="150" height="150"/>
                                     <mask key="constraints">
                                         <include reference="9zc-Ia-85H"/>
                                     </mask>
@@ -204,6 +206,9 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="428" width="360" height="303"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="Ixa-p3-kuQ" id="GXS-pw-pDc"/>
                                     <outlet property="delegate" destination="Ixa-p3-kuQ" id="Lgh-aG-ru4"/>
@@ -211,6 +216,9 @@
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLh-iF-Q9h">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="186" width="360" height="234"/>
+                                </variation>
                                 <connections>
                                     <segue destination="oZr-Xo-4yR" kind="embed" id="MIA-AS-yrV"/>
                                 </connections>
@@ -392,7 +400,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhY-bH-Eya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1911" y="-601.5"/>
+            <point key="canvasLocation" x="-1914" y="-582"/>
         </scene>
         <!--BookInfoVC-->
         <scene sceneID="kuR-cJ-CXC">
@@ -491,7 +499,8 @@
                                         <exclude reference="dhT-v9-7iN"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="46" width="400" height="500"/>
                                     <mask key="constraints">
                                         <include reference="dhT-v9-7iN"/>
                                     </mask>
@@ -713,6 +722,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugj-jT-vRl">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="639"/>
+                                </variation>
                             </mapView>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJE-rJ-ZV5">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -825,6 +837,7 @@
         <scene sceneID="FgX-AR-hj1">
             <objects>
                 <tabBarController title="BookTabBarController" id="jMT-wC-rn5" customClass="BookTabBarController" customModule="CharacterNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="FPB-RU-i8t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
