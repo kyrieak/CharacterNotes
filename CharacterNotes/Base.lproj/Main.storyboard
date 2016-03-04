@@ -63,8 +63,7 @@
                                         <exclude reference="XvA-De-mnx"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="28" width="400" height="150"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="XvA-De-mnx"/>
                                     </mask>
@@ -85,8 +84,7 @@
                                         <exclude reference="9zc-Ia-85H"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="28" width="150" height="150"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="9zc-Ia-85H"/>
                                     </mask>
@@ -206,9 +204,6 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="428" width="360" height="303"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="Ixa-p3-kuQ" id="GXS-pw-pDc"/>
                                     <outlet property="delegate" destination="Ixa-p3-kuQ" id="Lgh-aG-ru4"/>
@@ -216,9 +211,6 @@
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLh-iF-Q9h">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="186" width="360" height="234"/>
-                                </variation>
                                 <connections>
                                     <segue destination="oZr-Xo-4yR" kind="embed" id="MIA-AS-yrV"/>
                                 </connections>
@@ -423,7 +415,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bylineRow" textLabel="zCY-az-1Pf" rowHeight="32" style="IBUITableViewCellStyleDefault" id="ioo-kn-teE">
-                                        <rect key="frame" x="0.0" y="28" width="240" height="32"/>
+                                        <rect key="frame" x="0.0" y="92" width="240" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ioo-kn-teE" id="IoD-uO-zyV">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="31.5"/>
@@ -443,7 +435,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerRow" textLabel="aUP-yE-bct" rowHeight="32" style="IBUITableViewCellStyleDefault" id="rwK-eJ-Q7K">
-                                        <rect key="frame" x="0.0" y="60" width="240" height="32"/>
+                                        <rect key="frame" x="0.0" y="124" width="240" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rwK-eJ-Q7K" id="rbO-Gx-ebe">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="31.5"/>
@@ -464,7 +456,7 @@
                                         <color key="backgroundColor" red="0.99772652116402116" green="0.89406914546336058" blue="0.77760207567890383" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingRow" rowHeight="136" id="sxe-ZS-hwP" userLabel="settingRow">
-                                        <rect key="frame" x="0.0" y="92" width="240" height="136"/>
+                                        <rect key="frame" x="0.0" y="156" width="240" height="136"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sxe-ZS-hwP" id="Mly-tz-W1F">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="135.5"/>
@@ -499,8 +491,7 @@
                                         <exclude reference="dhT-v9-7iN"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="46" width="400" height="500"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="dhT-v9-7iN"/>
                                     </mask>
@@ -717,14 +708,11 @@
                         <viewControllerLayoutGuide type="bottom" id="FWb-9t-Pu6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AfJ-ND-D2y">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugj-jT-vRl">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="639"/>
-                                </variation>
                             </mapView>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJE-rJ-ZV5">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -825,6 +813,7 @@
                     <navigationItem key="navigationItem" title="The Lion, the Witch, and the Wardrobe" id="cDA-yO-Zm3"/>
                     <connections>
                         <outlet property="pickerDataSource" destination="FHw-mA-Hfg" id="fuu-sR-yWB"/>
+                        <segue destination="KjT-LO-jXw" kind="presentation" identifier="segueForReachability" id="YbH-b9-sIw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMG-3j-Ckz" userLabel="First Responder" sceneMemberID="firstResponder"/>
