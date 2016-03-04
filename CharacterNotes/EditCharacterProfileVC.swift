@@ -10,18 +10,13 @@ import Foundation
 import UIKit
 import MapKit
 
-class SummaryViewController: UIViewController, UITextFieldDelegate {
-  var mapView: MKMapView?
+class EditCharacterProfileVC: UIViewController, UITextFieldDelegate {
   var textFields: [UITextField] = []
   //var isEditing = false
   
   override func viewDidLayoutSubviews() {
     if (textFields.count < 1) {
       editing = false
-      
-      mapView = view.viewWithTag(4) as? MKMapView
-      mapView?.centerCoordinate.latitude  = 55.3
-      mapView?.centerCoordinate.longitude = -3.0
       
       textFields.append((view.viewWithTag(11) as! UITextField))
       textFields.append((view.viewWithTag(12) as! UITextField))

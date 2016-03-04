@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class BookListViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class AllListsTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
   typealias ListFC = ListFetchController
 
   var selectedList: CNList?
@@ -38,7 +38,7 @@ class BookListViewController: UITableViewController, NSFetchedResultsControllerD
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.identifier == "segueToBooks") {
-      let dvc = (segue.destinationViewController as! BooksViewController)
+      let dvc = (segue.destinationViewController as! BookListTableVC)
 
       if (selectedList != nil) {
         dvc.dataSource = BooksTableDataSource(list: selectedList!)

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TestViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CharacterProfileTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //  override func viewDidLoad() {
 //    let textView = view.viewWithTag(1) as! MarqueeTextView
 //    textView.setMarqueeTextTo("Eliza Bennet ")

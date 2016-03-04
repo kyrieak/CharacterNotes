@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class BooksViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class BookListTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
   typealias BookFC = BookFetchController
   
   var dataSource: BooksTableDataSource?
