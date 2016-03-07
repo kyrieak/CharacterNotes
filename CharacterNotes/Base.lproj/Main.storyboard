@@ -63,7 +63,8 @@
                                         <exclude reference="XvA-De-mnx"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="72" width="400" height="150"/>
                                     <mask key="constraints">
                                         <include reference="XvA-De-mnx"/>
                                     </mask>
@@ -84,7 +85,8 @@
                                         <exclude reference="9zc-Ia-85H"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="72" width="150" height="150"/>
                                     <mask key="constraints">
                                         <include reference="9zc-Ia-85H"/>
                                     </mask>
@@ -207,6 +209,9 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="472" width="360" height="259"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="Ixa-p3-kuQ" id="GXS-pw-pDc"/>
                                     <outlet property="delegate" destination="Ixa-p3-kuQ" id="Lgh-aG-ru4"/>
@@ -214,6 +219,9 @@
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLh-iF-Q9h">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="230" width="360" height="234"/>
+                                </variation>
                                 <connections>
                                     <segue destination="oZr-Xo-4yR" kind="embed" id="MIA-AS-yrV"/>
                                 </connections>
@@ -290,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kMH-5a-hKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="812.25"/>
+            <point key="canvasLocation" x="1029" y="821.25"/>
         </scene>
         <!--AllListsTableVC-->
         <scene sceneID="Dxi-kb-lZp">
@@ -386,9 +394,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="List Name" id="wE2-8r-Hqm"/>
-                    <connections>
-                        <segue destination="JN0-ym-u0E" kind="show" id="9kM-TJ-opW"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhY-bH-Eya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -578,11 +583,28 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Book Info" image="infoIcon" selectedImage="infoIcon" id="XlN-ie-jB2"/>
+                    <navigationItem key="navigationItem" id="pEd-Og-8g2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gS7-Lm-E9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-432" y="-582"/>
+            <point key="canvasLocation" x="264" y="-582"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="Oe4-pW-kvt">
+            <objects>
+                <navigationController id="S9s-L1-QfI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="mapicon" id="Jsc-04-wft"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TFP-At-8LN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="T5g-b5-6xo" kind="relationship" relationship="rootViewController" id="Qww-Kj-Fe7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pgr-oM-R1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-471" y="150.75"/>
         </scene>
         <!--SearchResultsTableVC-->
         <scene sceneID="Dw2-Ao-XYT">
@@ -623,7 +645,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebE-in-Z0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="520.5" y="-113.25"/>
+            <point key="canvasLocation" x="1029" y="150.75"/>
         </scene>
         <!--CharactersTableVC-->
         <scene sceneID="17J-I5-vZn">
@@ -664,7 +686,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WCX-IW-rHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="336" y="812.25"/>
+            <point key="canvasLocation" x="303" y="821.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TUp-dL-0QK">
@@ -680,7 +702,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="298-mH-uVR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-432" y="1553.25"/>
+            <point key="canvasLocation" x="-471" y="1509.75"/>
         </scene>
         <!--BookCharactersSplitVC-->
         <scene sceneID="GUt-us-xsr">
@@ -694,7 +716,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OnJ-R6-NVJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-432" y="812.25"/>
+            <point key="canvasLocation" x="-471" y="821.25"/>
         </scene>
         <!--MapViewController-->
         <scene sceneID="qWu-Qf-Fst">
@@ -806,7 +828,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Map" image="mapicon" selectedImage="mapicon" id="KIi-G0-BwC"/>
+                    <navigationItem key="navigationItem" id="0nb-pd-nqf"/>
                     <connections>
                         <outlet property="pickerDataSource" destination="FHw-mA-Hfg" id="fuu-sR-yWB"/>
                         <segue destination="KjT-LO-jXw" kind="presentation" identifier="segueForReachability" id="YbH-b9-sIw"/>
@@ -816,7 +838,7 @@
                 <customObject id="FHw-mA-Hfg" customClass="ContinentsPickerDataSource" customModule="CharacterNotes" customModuleProvider="target"/>
                 <customObject id="4Yn-6C-kAf" customClass="UISearchController"/>
             </objects>
-            <point key="canvasLocation" x="-432" y="130.5"/>
+            <point key="canvasLocation" x="303" y="150.75"/>
         </scene>
         <!--BookTabBarController-->
         <scene sceneID="FgX-AR-hj1">
@@ -827,14 +849,30 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>
                     <connections>
-                        <segue destination="JN0-ym-u0E" kind="relationship" relationship="viewControllers" id="afZ-cd-Iyk"/>
-                        <segue destination="T5g-b5-6xo" kind="relationship" relationship="viewControllers" id="c4I-BT-ZCQ"/>
-                        <segue destination="6yx-S6-47v" kind="relationship" relationship="viewControllers" id="1yA-G7-Qkx"/>
+                        <segue destination="da7-QP-ttm" kind="relationship" relationship="viewControllers" id="95t-0A-AC2"/>
+                        <segue destination="S9s-L1-QfI" kind="relationship" relationship="viewControllers" id="jbg-Tp-XxT"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTj-tA-dJR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1198.5" y="-582"/>
+        </scene>
+        <!--Info-->
+        <scene sceneID="33j-DZ-e2F">
+            <objects>
+                <navigationController id="da7-QP-ttm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Info" image="infoIcon" id="kgn-oR-7zF"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sMY-ME-On9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JN0-ym-u0E" kind="relationship" relationship="rootViewController" id="ZdT-i8-jNP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ATc-Ke-Lem" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-453" y="-582"/>
         </scene>
         <!--EditCharacterProfileVC-->
         <scene sceneID="KRH-Tq-0cO">
@@ -1228,7 +1266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2K-4Q-agS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="1545"/>
+            <point key="canvasLocation" x="1776" y="1278"/>
         </scene>
         <!--Summary Info Controller-->
         <scene sceneID="5hx-8p-aTt">
@@ -1590,7 +1628,6 @@
         <image name="mapicon" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="G85-Ua-EFy"/>
-        <segue reference="afZ-cd-Iyk"/>
+        <segue reference="O38-5Z-yFK"/>
     </inferredMetricsTieBreakers>
 </document>
