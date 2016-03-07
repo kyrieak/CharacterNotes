@@ -40,4 +40,21 @@ class BookListTableVC: UITableViewController, NSFetchedResultsControllerDelegate
     }
   }
   
+  
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let book = dataSource?.bookAtIndexPath(indexPath)
+
+    performSegueWithIdentifier("selectedBookSegue", sender: book)
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let dvc = segue.destinationViewController as! BookTabBarController
+
+    dvc.book = (sender as! CNBook)
+    
+    for vc in dvc.viewControllers! {
+      vc.navigationItem.title = dvc.book?.title
+      Log.withSpace("\(vc.navigationItem.title)")
+    }
+  }
 }

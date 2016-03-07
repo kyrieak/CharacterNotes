@@ -62,7 +62,11 @@ class NavController: UINavigationController, UINavigationControllerDelegate {
   }
 
   func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-    Log.withLine("*", msg: "\(viewController)\nand nav controller is: \(viewController.navigationController)")
+    Log.withLine("*", msg: "\(viewController.navigationItem)\nand title is: \(viewController.navigationItem.title)")
+  }
+  
+  override func pushViewController(viewController: UIViewController, animated: Bool) {
+    super.pushViewController(viewController, animated: animated)
   }
   
   private class func getDocumentContext() -> NSManagedObjectContext {

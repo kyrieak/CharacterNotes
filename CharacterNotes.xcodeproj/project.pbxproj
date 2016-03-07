@@ -43,6 +43,7 @@
 		34979A201C7296310065CC75 /* SummaryInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34979A1F1C7296310065CC75 /* SummaryInfoController.swift */; };
 		349AE7331C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349AE7311C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift */; };
 		349AE7341C740AD700D4BCD2 /* CNLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349AE7321C740AD700D4BCD2 /* CNLocation.swift */; };
+		34A51E7A1C8965B0003555DD /* BookCharactersSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A51E791C8965B0003555DD /* BookCharactersSplitVC.swift */; };
 		34AA39E61C606FCB006536AB /* ListFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E51C606FCB006536AB /* ListFetchController.swift */; };
 		34AA39E81C607781006536AB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E71C607781006536AB /* Logger.swift */; };
 		34BFD4F91C6C628B00F4E5F5 /* CharacterProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BFD4F81C6C628B00F4E5F5 /* CharacterProfileTableVC.swift */; };
@@ -113,6 +114,7 @@
 		34979A1F1C7296310065CC75 /* SummaryInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryInfoController.swift; sourceTree = "<group>"; };
 		349AE7311C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CNLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		349AE7321C740AD700D4BCD2 /* CNLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNLocation.swift; sourceTree = "<group>"; };
+		34A51E791C8965B0003555DD /* BookCharactersSplitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCharactersSplitVC.swift; sourceTree = "<group>"; };
 		34AA39E51C606FCB006536AB /* ListFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFetchController.swift; sourceTree = "<group>"; };
 		34AA39E71C607781006536AB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		34BFD4F81C6C628B00F4E5F5 /* CharacterProfileTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterProfileTableVC.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				34805E941C8909DF00FBAF39 /* BookTabBarController.swift */,
 				34777F631C76AD4000D6217B /* BookInfoVC.swift */,
 				34DB60C81C7C543E005758E2 /* MapViewController.swift */,
+				34A51E791C8965B0003555DD /* BookCharactersSplitVC.swift */,
 				34BFD4F81C6C628B00F4E5F5 /* CharacterProfileTableVC.swift */,
 				34979A1F1C7296310065CC75 /* SummaryInfoController.swift */,
 				3410BAC61C71B480000A3957 /* EditCharacterProfileVC.swift */,
@@ -438,6 +441,7 @@
 				346C8BA71C5FFC9900FFB8EB /* CNAuthor.swift in Sources */,
 				346C8BA81C5FFC9900FFB8EB /* CNCharacter+CoreDataProperties.swift in Sources */,
 				349AE7341C740AD700D4BCD2 /* CNLocation.swift in Sources */,
+				34A51E7A1C8965B0003555DD /* BookCharactersSplitVC.swift in Sources */,
 				345997E41C4E04C30025D178 /* ListsTableDataSource.swift in Sources */,
 				346C8BA41C5FFC9900FFB8EB /* CNGroup+CoreDataProperties.swift in Sources */,
 				347D11191C752B1E00E35289 /* CNProfile+CoreDataProperties.swift in Sources */,

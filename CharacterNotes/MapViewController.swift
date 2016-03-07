@@ -12,7 +12,7 @@ import MapKit
 
 class MapViewController: UIViewController, UIPickerViewDelegate, MKMapViewDelegate {
   // MARK: - Properties -
-  
+  var book: CNBook?
   
   // MARK: Objects
   
@@ -30,6 +30,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, MKMapViewDelega
   
   private var setupDone = false
   private var continentSelection: Continent?
+  
   
 
   /* -------------------------------------------------------------- */

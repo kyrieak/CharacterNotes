@@ -162,6 +162,9 @@
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="58" y="8" width="174" height="95"/>
+                                                    </variation>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -284,13 +287,6 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Elizabeth Bennet" id="vEt-7o-RzY">
-                        <barButtonItem key="rightBarButtonItem" title="See Next" id="iav-8i-I02">
-                            <connections>
-                                <segue destination="I3I-Db-Xtt" kind="show" id="b3O-wY-q5p"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kMH-5a-hKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -352,7 +348,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="bookRow" textLabel="fTA-6Z-9uV" detailTextLabel="bqf-8P-O1O" style="IBUITableViewCellStyleSubtitle" id="JEe-IN-sg3">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JEe-IN-sg3" id="Gcg-62-j9S">
                                     <rect key="frame" x="0.0" y="0.0" width="553" height="43.5"/>
@@ -381,7 +377,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jMT-wC-rn5" kind="show" trigger="accessoryAction" id="U2S-Ii-eqV"/>
+                                    <segue destination="jMT-wC-rn5" kind="show" identifier="selectedBookSegue" trigger="accessoryAction" id="U2S-Ii-eqV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -389,6 +385,10 @@
                             <outlet property="delegate" destination="Xja-ye-49W" id="jd8-7T-aWE"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="List Name" id="wE2-8r-Hqm"/>
+                    <connections>
+                        <segue destination="JN0-ym-u0E" kind="show" id="9kM-TJ-opW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhY-bH-Eya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -579,9 +579,6 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Book Info" image="infoIcon" selectedImage="infoIcon" id="XlN-ie-jB2"/>
-                    <navigationItem key="navigationItem" title="The Lion, the Witch, and the Wardrobe" id="VlX-Uc-ZMZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="uOH-Mb-N7H"/>
-                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gS7-Lm-E9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -810,7 +807,6 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Map" image="mapicon" selectedImage="mapicon" id="KIi-G0-BwC"/>
-                    <navigationItem key="navigationItem" title="The Lion, the Witch, and the Wardrobe" id="cDA-yO-Zm3"/>
                     <connections>
                         <outlet property="pickerDataSource" destination="FHw-mA-Hfg" id="fuu-sR-yWB"/>
                         <segue destination="KjT-LO-jXw" kind="presentation" identifier="segueForReachability" id="YbH-b9-sIw"/>
@@ -826,7 +822,6 @@
         <scene sceneID="FgX-AR-hj1">
             <objects>
                 <tabBarController title="BookTabBarController" id="jMT-wC-rn5" customClass="BookTabBarController" customModule="CharacterNotes" customModuleProvider="target" sceneMemberID="viewController">
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="FPB-RU-i8t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1595,6 +1590,7 @@
         <image name="mapicon" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O38-5Z-yFK"/>
+        <segue reference="G85-Ua-EFy"/>
+        <segue reference="afZ-cd-Iyk"/>
     </inferredMetricsTieBreakers>
 </document>
