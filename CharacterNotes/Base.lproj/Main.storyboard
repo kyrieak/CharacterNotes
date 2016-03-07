@@ -583,11 +583,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="pEd-Og-8g2"/>
+                    <navigationItem key="navigationItem" title="The Lion, the Witch, and the Wardrobe" id="Nwu-eh-Ggw">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="f8v-f8-k6n"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gS7-Lm-E9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="264" y="-582"/>
+            <point key="canvasLocation" x="303" y="-582"/>
         </scene>
         <!--Map-->
         <scene sceneID="Oe4-pW-kvt">
@@ -828,7 +830,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="0nb-pd-nqf"/>
+                    <navigationItem key="navigationItem" title="The Lion, the Witch, and the Wardobe" id="m3Z-3W-MH4"/>
                     <connections>
                         <outlet property="pickerDataSource" destination="FHw-mA-Hfg" id="fuu-sR-yWB"/>
                         <segue destination="KjT-LO-jXw" kind="presentation" identifier="segueForReachability" id="YbH-b9-sIw"/>
@@ -851,6 +853,7 @@
                     <connections>
                         <segue destination="da7-QP-ttm" kind="relationship" relationship="viewControllers" id="95t-0A-AC2"/>
                         <segue destination="S9s-L1-QfI" kind="relationship" relationship="viewControllers" id="jbg-Tp-XxT"/>
+                        <segue destination="6yx-S6-47v" kind="relationship" relationship="viewControllers" id="L6g-jK-Szy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTj-tA-dJR" userLabel="First Responder" sceneMemberID="firstResponder"/>
