@@ -47,6 +47,7 @@
 		34AA39E61C606FCB006536AB /* ListFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E51C606FCB006536AB /* ListFetchController.swift */; };
 		34AA39E81C607781006536AB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E71C607781006536AB /* Logger.swift */; };
 		34BFD4F91C6C628B00F4E5F5 /* CharacterProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BFD4F81C6C628B00F4E5F5 /* CharacterProfileTableVC.swift */; };
+		34CA4EF71C8FE19E006E2B20 /* BookCharactersTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA4EF61C8FE19E006E2B20 /* BookCharactersTableVC.swift */; };
 		34D466341C520FEC00432C97 /* BookFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D466331C520FEC00432C97 /* BookFetchController.swift */; };
 		34DB60C91C7C543E005758E2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DB60C81C7C543E005758E2 /* MapViewController.swift */; };
 		34E2DF1E1C7CF647008321F0 /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E2DF1D1C7CF647008321F0 /* MapHelper.swift */; };
@@ -118,6 +119,7 @@
 		34AA39E51C606FCB006536AB /* ListFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFetchController.swift; sourceTree = "<group>"; };
 		34AA39E71C607781006536AB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		34BFD4F81C6C628B00F4E5F5 /* CharacterProfileTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterProfileTableVC.swift; sourceTree = "<group>"; };
+		34CA4EF61C8FE19E006E2B20 /* BookCharactersTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCharactersTableVC.swift; sourceTree = "<group>"; };
 		34D466331C520FEC00432C97 /* BookFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFetchController.swift; sourceTree = "<group>"; };
 		34DB60C81C7C543E005758E2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		34E2DF1D1C7CF647008321F0 /* MapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelper.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				34777F631C76AD4000D6217B /* BookInfoVC.swift */,
 				34DB60C81C7C543E005758E2 /* MapViewController.swift */,
 				34A51E791C8965B0003555DD /* BookCharactersSplitVC.swift */,
+				34CA4EF61C8FE19E006E2B20 /* BookCharactersTableVC.swift */,
 				34BFD4F81C6C628B00F4E5F5 /* CharacterProfileTableVC.swift */,
 				34979A1F1C7296310065CC75 /* SummaryInfoController.swift */,
 				3410BAC61C71B480000A3957 /* EditCharacterProfileVC.swift */,
@@ -427,6 +430,7 @@
 				345AA2131C55F46300B8E878 /* BooksTableDataSource.swift in Sources */,
 				34BFD4F91C6C628B00F4E5F5 /* CharacterProfileTableVC.swift in Sources */,
 				346C8BA11C5FFC9900FFB8EB /* CNHeading.swift in Sources */,
+				34CA4EF71C8FE19E006E2B20 /* BookCharactersTableVC.swift in Sources */,
 				343D23741C5F391E00D8AD8F /* Schema.xcdatamodeld in Sources */,
 				346C8BA91C5FFC9900FFB8EB /* CNCharacter.swift in Sources */,
 				34EBCE171C6BF9AE0043BCD9 /* ProfileView.swift in Sources */,

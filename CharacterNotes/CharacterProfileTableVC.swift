@@ -9,13 +9,42 @@
 import Foundation
 import UIKit
 
-class CharacterProfileTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CharacterProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+  var character: CNCharacter?
+  var displayRowIDs: [String] = []
 //  override func viewDidLoad() {
 //    let textView = view.viewWithTag(1) as! MarqueeTextView
 //    textView.setMarqueeTextTo("Eliza Bennet ")
 //  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    let context = (UIApplication.sharedApplication().delegate as! AppDelegate).getDocumentContext()
+    character = CNCharacter(context: context)
+    character?.firstName = "Elizabeth"
+    character?.lastName  = "Bennet"
+    character?.ageRangeMin = 18
+    character?.ageRangeMax = 22
+    character?.ageRangeIsEstimate = true
+    character?.yearRangeMin = 1880
+    character?.yearRangeMax = 1900
+    character?.yearRangeIsEstimate = false
+    
+    if (character?.getFullName() != "") {
+      displayRowIDs.append("nameRow")
+    }
+    
+    if (!character!.getAgeRange().noInfo) {
+      displayRowIDs.append("ageRow")
+    }
+    
+    if (!character!.getTimePeriod().noInfo) {
+      displayRowIDs.append("yearRow")
+    }
+    
+    super.init(coder: aDecoder)
+  }
   override func viewDidLoad() {
-    self.automaticallyAdjustsScrollViewInsets = false
+//    self.automaticallyAdjustsScrollViewInsets = false
   }
   
   override func viewDidLayoutSubviews() {
@@ -27,17 +56,23 @@ class CharacterProfileTableVC: UIViewController, UITableViewDataSource, UITableV
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 3
+    return 2
   }
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    if (section == 0) {
+      return displayRowIDs.count
+    } else {
+      return 8
+    }
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let quoteRow = tableView.dequeueReusableCellWithIdentifier("quoteRow")
-    
-    return quoteRow!
+    if (indexPath.section == 0) {
+      return tableView.dequeueReusableCellWithIdentifier(displayRowIDs[indexPath.row])!
+    } else {
+      return tableView.dequeueReusableCellWithIdentifier("quoteRow")!
+    }
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
