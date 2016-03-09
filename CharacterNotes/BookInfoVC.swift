@@ -16,6 +16,11 @@ class BookInfoVC: UIViewController {
   
   override func viewDidLoad() {
     Log.withSpace("bookInfoVC viewDidLoad")
+    let navBar = navigationController?.navigationBar
+    Log.withLine("V", msg: "\(navBar?.constraintsAffectingLayoutForAxis(UILayoutConstraintAxis.Vertical))")
+    var textAttributes = (navigationController?.navigationBar.titleTextAttributes ?? [String: AnyObject]())
+    textAttributes[NSFontAttributeName] = UIFont.boldSystemFontOfSize(16)
+    navigationController?.navigationBar.titleTextAttributes = textAttributes
   }
   
   @IBAction func openLink(sender: UIButton) {

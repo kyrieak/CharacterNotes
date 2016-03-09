@@ -57,4 +57,7 @@ class BookListTableVC: UITableViewController, NSFetchedResultsControllerDelegate
       Log.withSpace("\(vc.navigationItem.title)")
     }
   }
+  
+  @IBAction func unwindFromBookView(segue: UIStoryboardSegue) {
+  }
 }

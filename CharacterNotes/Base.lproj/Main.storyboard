@@ -63,8 +63,7 @@
                                         <exclude reference="XvA-De-mnx"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="72" width="400" height="150"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="XvA-De-mnx"/>
                                     </mask>
@@ -85,8 +84,7 @@
                                         <exclude reference="9zc-Ia-85H"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="72" width="150" height="150"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="9zc-Ia-85H"/>
                                     </mask>
@@ -164,9 +162,6 @@
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="58" y="8" width="174" height="95"/>
-                                                    </variation>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -209,9 +204,6 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="472" width="360" height="259"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="Ixa-p3-kuQ" id="GXS-pw-pDc"/>
                                     <outlet property="delegate" destination="Ixa-p3-kuQ" id="Lgh-aG-ru4"/>
@@ -219,9 +211,6 @@
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLh-iF-Q9h">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="230" width="360" height="234"/>
-                                </variation>
                                 <connections>
                                     <segue destination="oZr-Xo-4yR" kind="embed" id="MIA-AS-yrV"/>
                                 </connections>
@@ -385,7 +374,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jMT-wC-rn5" kind="show" identifier="selectedBookSegue" trigger="accessoryAction" id="U2S-Ii-eqV"/>
+                                    <segue destination="jMT-wC-rn5" kind="presentation" identifier="selectedBookSegue" trigger="accessoryAction" id="U2S-Ii-eqV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -394,6 +383,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="List Name" id="wE2-8r-Hqm"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhY-bH-Eya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -584,10 +574,16 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="The Lion, the Witch, and the Wardrobe" id="Nwu-eh-Ggw">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="f8v-f8-k6n"/>
+                        <barButtonItem key="leftBarButtonItem" image="leftArrow" id="sYu-OR-MEY">
+                            <connections>
+                                <segue destination="pjc-MP-pfK" kind="unwind" unwindAction="unwindFromBookView:" id="QwN-fX-byf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="pencilIcon" id="f8v-f8-k6n"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gS7-Lm-E9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pjc-MP-pfK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="303" y="-582"/>
         </scene>
@@ -830,7 +826,9 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="The Lion, the Witch, and the Wardobe" id="m3Z-3W-MH4"/>
+                    <navigationItem key="navigationItem" title="The Lion, the Witch, and the Wardobe" id="m3Z-3W-MH4">
+                        <barButtonItem key="leftBarButtonItem" image="leftArrow" id="ppw-Dt-Ife"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="pickerDataSource" destination="FHw-mA-Hfg" id="fuu-sR-yWB"/>
                         <segue destination="KjT-LO-jXw" kind="presentation" identifier="segueForReachability" id="YbH-b9-sIw"/>
@@ -1628,7 +1626,9 @@
     </scenes>
     <resources>
         <image name="infoIcon" width="32" height="32"/>
+        <image name="leftArrow" width="22" height="22"/>
         <image name="mapicon" width="32" height="32"/>
+        <image name="pencilIcon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="O38-5Z-yFK"/>
