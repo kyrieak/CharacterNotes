@@ -28,6 +28,33 @@ class BookInfoVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //    navigationController?.navigationBar.titleTextAttributes = textAttributes
   }
   
+  override func viewDidLayoutSubviews() {
+    let timelineSection = view.viewWithTag(1)
+    let placesSection = view.viewWithTag(2)
+    
+    timelineSection?.frame.size.height = 32
+    placesSection?.frame.size.height = 32
+    
+    let timelineHeader = timelineSection!.viewWithTag(10)!
+    let placesHeader = placesSection!.viewWithTag(20)!
+    
+    timelineHeader.layer.borderWidth = 1
+    placesHeader.layer.borderWidth = 1
+    timelineHeader.layer.borderColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0).CGColor
+    placesHeader.layer.borderColor = timelineHeader.layer.borderColor
+//    let timelineTable = view.viewWithTag(tag.timelineTable)!
+//    let placesTable = view.viewWithTag(tag.placesTable)!
+//    let contentHeight = view.bounds.height - 40 - 64
+//    
+//    timelineTable.frame.size.height = contentHeight
+//    placesTable.frame.size.height = contentHeight
+//    view.viewWithTag(1)?.clipsToBounds = true
+
+//
+//    timelineTable.hidden = true
+//    placesTable.hidden = true
+  }
+  
   @IBAction func openLink(sender: UIButton) {
     UIApplication.sharedApplication().openURL(NSURL(string: "http://itunes.apple.com/us/book/mysterious-affair-at-styles/id765104888?mt=11")!)
   }
@@ -74,16 +101,22 @@ class BookInfoVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   }
   
   
+  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    if (tableView.tag == tag.placesTable) {
+      Log.withLine("-", msg: "\(cell.reuseIdentifier)")
+    }
+  }
+  
   @IBAction func toggleSection(sender: UIButton) {
-//    let section = sender.tag
-//    let tableView = (view.viewWithTag(20) as! UITableView)
     let contentHeight = view.bounds.height - 40 - 64
 
     let timelineSection = view.viewWithTag(1)!
     let placesSection = view.viewWithTag(2)!
-
-    Log.withSpace("dropdown tag is: \(sender.tag)")
     
+    placesSection.viewWithTag(21)?.frame.size.height = contentHeight
+    Log.withLine("T", msg: "\(placesSection.viewWithTag(21)!.frame)")
+    Log.withLine("S", msg: "\(placesSection.frame)")
+
     if (sender.tag == 100) {
       UIView.animateWithDuration(0.5, animations: {
         if (self.placesTableOpen) {
@@ -96,21 +129,19 @@ class BookInfoVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
           timelineSection.frame.size.height = contentHeight
         }
         
-        placesSection.frame.origin.y = timelineSection.frame.maxY
+        placesSection.frame.origin.y = timelineSection.frame.maxY - 1
         
         }, completion: {(complete: Bool) in
           self.timelineTableOpen = !self.timelineTableOpen
           self.placesTableOpen = false
       })
-      timelineSection.viewWithTag(11)!.setNeedsDisplay()
-
     } else {
       UIView.animateWithDuration(0.5, animations: {
         if (self.timelineTableOpen) {
           timelineSection.frame.size.height = 32
         }
 
-        placesSection.frame.origin.y = timelineSection.frame.maxY
+        placesSection.frame.origin.y = timelineSection.frame.maxY - 1
         
         if (self.placesTableOpen) {
           placesSection.frame.size.height = 32
@@ -121,38 +152,8 @@ class BookInfoVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }, completion: {(complete: Bool) in
           self.placesTableOpen = !self.placesTableOpen
           self.timelineTableOpen = false
+          placesSection.viewWithTag(21)?.setNeedsDisplay()
       })
     }
-    
-
-//    stackView.frame.size.height = contentHeight + 64
-    
-//    UIView.animateWithDuration(1.0, animations: {
-//      timelineTable.frame.size.height = newFrame.height
-//      }, completion: {(complete: Bool) -> Void in
-//      Log.withSpace("complete? \(complete) \nheight: \(timelineTable.frame.height)")
-//        Log.withSpace("complete? \(complete) \nheight: \(self.view.viewWithTag(123)!.frame.height)")
-//    })
-
-    //    if (activeSection == nil) {
-//      activeSection = section
-//
-//      UIView.animateWithDuration(1.0, animations: {
-//        self.view.viewWithTag(self.tag.timelineTable)!.bounds.size.height = stackView.frame.height - 64
-//      })
-//      tableView.reloadSections(NSIndexSet(index: section), withRowAnimation: .Top)
-//    } else {
-//      let aSection = activeSection!
-//      
-//      activeSection = nil
-//      
-//      tableView.reloadSections(NSIndexSet(index: aSection), withRowAnimation: .Fade)
-//
-//      if (aSection != sender.tag) {
-//        activeSection = sender.tag
-//        
-//        tableView.reloadSections(NSIndexSet(index: activeSection!), withRowAnimation: .Fade)
-//      }
-//    }
   }
 }
