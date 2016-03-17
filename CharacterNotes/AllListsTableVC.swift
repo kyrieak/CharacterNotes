@@ -31,7 +31,7 @@ class AllListsTableVC: UITableViewController, NSFetchedResultsControllerDelegate
     } else {
       selectedList = nil
     }
-
+    
     performSegueWithIdentifier("segueToBooks", sender: nil)
   }
   

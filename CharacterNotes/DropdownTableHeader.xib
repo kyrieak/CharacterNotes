@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ygr-4D-DuR" userLabel="DropdownTableHeader" customClass="DropdownTableHeader" customModule="CharacterNotes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" userLabel="contentView">
+                    <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rV-VV-OEY" userLabel="titleLabel">
+                            <rect key="frame" x="8" y="12" width="64.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1900-2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRE-iV-mdB" userLabel="detailLabel">
+                            <rect key="frame" x="381" y="12.5" width="82.5" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WS9-Xv-jcW" userLabel="dropdownButton">
+                            <rect key="frame" x="470" y="6" width="30" height="32"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="≡">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="WS9-Xv-jcW" firstAttribute="leading" secondItem="WRE-iV-mdB" secondAttribute="trailing" constant="6" id="Dc4-lv-Qys"/>
+                        <constraint firstItem="6rV-VV-OEY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Foc-8U-uLb"/>
+                        <constraint firstItem="WS9-Xv-jcW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Km4-7l-ifg"/>
+                        <constraint firstAttribute="trailing" secondItem="WS9-Xv-jcW" secondAttribute="trailing" id="NMd-tz-epA"/>
+                        <constraint firstItem="WRE-iV-mdB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PoT-eA-QVR"/>
+                        <constraint firstItem="6rV-VV-OEY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="kQi-FB-t1S"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="ygr-4D-DuR" secondAttribute="top" id="4mu-aE-fFn"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="width" secondItem="ygr-4D-DuR" secondAttribute="width" id="Mp7-sO-Zrl"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="height" secondItem="ygr-4D-DuR" secondAttribute="height" id="OHy-QV-eKM"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="ygr-4D-DuR" secondAttribute="leading" id="zim-w1-GIO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="320" y="413"/>
+        </view>
+    </objects>
+</document>

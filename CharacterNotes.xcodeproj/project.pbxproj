@@ -11,6 +11,7 @@
 		341956511C51714200F1810B /* AllListsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341956501C51714200F1810B /* AllListsTableVC.swift */; };
 		341F9DD91C6C449E007226AD /* MarqueeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341F9DD81C6C449E007226AD /* MarqueeTextView.swift */; };
 		343D23741C5F391E00D8AD8F /* Schema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 343D23721C5F391E00D8AD8F /* Schema.xcdatamodeld */; };
+		344146951C9375A9008D7011 /* DropdownTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344146941C9375A9008D7011 /* DropdownTableHeader.xib */; };
 		345997E41C4E04C30025D178 /* ListsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345997E31C4E04C30025D178 /* ListsTableDataSource.swift */; };
 		345AA2131C55F46300B8E878 /* BooksTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AA2121C55F46300B8E878 /* BooksTableDataSource.swift */; };
 		346A77D91C7EC03B00B8028E /* SearchResultsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346A77D81C7EC03B00B8028E /* SearchResultsTableVC.swift */; };
@@ -44,6 +45,7 @@
 		349AE7331C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349AE7311C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift */; };
 		349AE7341C740AD700D4BCD2 /* CNLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349AE7321C740AD700D4BCD2 /* CNLocation.swift */; };
 		34A51E7A1C8965B0003555DD /* BookCharactersSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A51E791C8965B0003555DD /* BookCharactersSplitVC.swift */; };
+		34A68E5C1C92B2F60043C919 /* DropdownTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A68E5B1C92B2F60043C919 /* DropdownTableHeader.swift */; };
 		34AA39E61C606FCB006536AB /* ListFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E51C606FCB006536AB /* ListFetchController.swift */; };
 		34AA39E81C607781006536AB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA39E71C607781006536AB /* Logger.swift */; };
 		34BFD4F91C6C628B00F4E5F5 /* CharacterProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BFD4F81C6C628B00F4E5F5 /* CharacterProfileTableVC.swift */; };
@@ -77,6 +79,7 @@
 		341956501C51714200F1810B /* AllListsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListsTableVC.swift; sourceTree = "<group>"; };
 		341F9DD81C6C449E007226AD /* MarqueeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeTextView.swift; sourceTree = "<group>"; };
 		343D23731C5F391E00D8AD8F /* Schema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schema.xcdatamodel; sourceTree = "<group>"; };
+		344146941C9375A9008D7011 /* DropdownTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropdownTableHeader.xib; sourceTree = "<group>"; };
 		345997E31C4E04C30025D178 /* ListsTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsTableDataSource.swift; sourceTree = "<group>"; };
 		345AA2121C55F46300B8E878 /* BooksTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksTableDataSource.swift; sourceTree = "<group>"; };
 		346A77D81C7EC03B00B8028E /* SearchResultsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableVC.swift; sourceTree = "<group>"; };
@@ -116,6 +119,7 @@
 		349AE7311C740AD700D4BCD2 /* CNLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CNLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		349AE7321C740AD700D4BCD2 /* CNLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNLocation.swift; sourceTree = "<group>"; };
 		34A51E791C8965B0003555DD /* BookCharactersSplitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCharactersSplitVC.swift; sourceTree = "<group>"; };
+		34A68E5B1C92B2F60043C919 /* DropdownTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownTableHeader.swift; sourceTree = "<group>"; };
 		34AA39E51C606FCB006536AB /* ListFetchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFetchController.swift; sourceTree = "<group>"; };
 		34AA39E71C607781006536AB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		34BFD4F81C6C628B00F4E5F5 /* CharacterProfileTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterProfileTableVC.swift; sourceTree = "<group>"; };
@@ -278,6 +282,8 @@
 			children = (
 				34EBCE161C6BF9AE0043BCD9 /* ProfileView.swift */,
 				341F9DD81C6C449E007226AD /* MarqueeTextView.swift */,
+				344146941C9375A9008D7011 /* DropdownTableHeader.xib */,
+				34A68E5B1C92B2F60043C919 /* DropdownTableHeader.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				344146951C9375A9008D7011 /* DropdownTableHeader.xib in Resources */,
 				348ACD851C4CDE0F001659A5 /* LaunchScreen.storyboard in Resources */,
 				348ACD821C4CDE0F001659A5 /* Assets.xcassets in Resources */,
 				348ACD801C4CDE0F001659A5 /* Main.storyboard in Resources */,
@@ -442,6 +449,7 @@
 				346C8BA51C5FFC9900FFB8EB /* CNGroup.swift in Sources */,
 				3410BAC71C71B480000A3957 /* EditCharacterProfileVC.swift in Sources */,
 				346A77D91C7EC03B00B8028E /* SearchResultsTableVC.swift in Sources */,
+				34A68E5C1C92B2F60043C919 /* DropdownTableHeader.swift in Sources */,
 				346C8BA71C5FFC9900FFB8EB /* CNAuthor.swift in Sources */,
 				346C8BA81C5FFC9900FFB8EB /* CNCharacter+CoreDataProperties.swift in Sources */,
 				349AE7341C740AD700D4BCD2 /* CNLocation.swift in Sources */,
